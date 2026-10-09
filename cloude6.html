@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Blackora Animation AI — मुफ़्त 2D कार्टून एनिमेशन वीडियो मेकर</title>
+<meta name="description" content="Blackora Animation AI: बिल्कुल मुफ़्त 2D कार्टून एनिमेशन वीडियो बनाओ और एडिट करो — सीन, किरदार, AI आवाज़, संगीत और टाइमलाइन के साथ। मोबाइल और कंप्यूटर दोनों पर।">
+<meta name="keywords" content="Blackora, animation maker, 2D cartoon video maker, एनिमेशन वीडियो, कार्टून वीडियो बनाओ, free animation app, AI voice">
+<meta name="theme-color" content="#0b0d14">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Blackora">
+<meta property="og:type" content="website"><meta property="og:title" content="Blackora Animation AI"><meta property="og:description" content="मुफ़्त 2D कार्टून एनिमेशन वीडियो मेकर — सीन, किरदार, AI आवाज़ और संगीत।">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Blackora Animation AI","applicationCategory":"MultimediaApplication","operatingSystem":"Android, iOS, Windows, macOS, Web","description":"मुफ़्त 2D कार्टून एनिमेशन वीडियो मेकर","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<style>
+:root{--bg:#0d0f14;--panel:#161a22;--panel2:#1d222c;--line:#2a3040;--text:#e8ebf2;--mute:#8b93a7;--acc:#7c5cff;--acc2:#22d3ee;--ok:#22c55e;--bad:#ef4444}
+body.light{--bg:#f3f5fa;--panel:#fff;--panel2:#eef1f7;--line:#d9deea;--text:#1a1e29;--mute:#667088}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:14px}
+button{font:inherit;color:inherit;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;cursor:pointer}
+button:hover{border-color:var(--acc)}
+button.pri{background:linear-gradient(135deg,var(--acc),var(--acc2));border:0;color:#fff;font-weight:600}
+button.sm{padding:5px 9px;font-size:12px;border-radius:8px}
+input,select,textarea{font:inherit;color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:9px 11px;width:100%;outline:none}
+input:focus,textarea:focus{border-color:var(--acc)}
+#app{display:flex;height:100%}
+#side{width:200px;background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:12px 8px;gap:2px;overflow:auto;flex-shrink:0}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:18px;padding:6px 10px 14px}.logo span{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;color:transparent}.sb-logo{width:30px;height:30px;flex-shrink:0}
+.nav{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;cursor:pointer;color:var(--mute);border:0;background:none;text-align:left;width:100%}
+.nav:hover{background:var(--panel2);color:var(--text)}
+.nav.on{background:var(--panel2);color:var(--text);border-left:3px solid var(--acc)}
+.sp{flex:1}
+#main{flex:1;overflow:auto;min-width:0}
+.top{display:flex;gap:10px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5;flex-wrap:wrap}
+.top h2{font-size:18px;flex:1}
+.wrap{padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center;position:relative}
+.card .em{font-size:44px;line-height:1.3}
+.thimg{width:64px;height:64px;object-fit:contain;border-radius:8px}
+.card .nm{font-size:12px;color:var(--mute);margin:4px 0 8px}
+.card .row{display:flex;gap:4px;justify-content:center;flex-wrap:wrap}
+.fav{position:absolute;top:6px;right:8px;cursor:pointer;font-size:16px;opacity:.5}
+.fav.on{opacity:1}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px}
+.chip{white-space:nowrap;padding:6px 12px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);cursor:pointer;font-size:12px;color:var(--mute)}
+.chip.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 12px;text-align:center;cursor:pointer}
+.tile:hover{border-color:var(--acc);transform:translateY(-2px)}
+.tile .em{font-size:34px}
+.tile b{display:block;margin-top:6px}
+h3{margin:18px 0 10px;font-size:15px}
+.hero{background:linear-gradient(135deg,#3b2a8f,#0e7490);border-radius:18px;padding:22px;margin-bottom:8px}
+.hero h1{font-size:22px;margin-bottom:6px;color:#fff}
+.hero p{color:#dbeafe;margin-bottom:14px}
+.list .it{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px;flex-wrap:wrap}
+.list .it .t{flex:1;min-width:100px}
+.list .it small{color:var(--mute)}
+#editor{display:none;flex-direction:column;height:100%}
+#editor.show{display:flex}
+.etop{display:flex;gap:6px;align-items:center;padding:8px 10px;background:var(--panel);border-bottom:1px solid var(--line);overflow-x:auto;flex-shrink:0}
+.etop button,.etop .seg{flex-shrink:0}
+.etop input{width:130px;padding:6px 8px;flex-shrink:0}
+.ebody{flex:1;display:flex;min-height:0;position:relative}
+.tools{width:64px;background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:auto;flex-shrink:0}
+.tools button{border:0;border-radius:0;background:none;padding:10px 2px;font-size:11px;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:2px}
+.tools button span{font-size:20px}
+.tools button.on{color:var(--text);background:var(--panel2);border-left:3px solid var(--acc)}
+.drawer{width:230px;background:var(--panel);border-right:1px solid var(--line);overflow:auto;padding:10px;flex-shrink:0}
+.drawer .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.drawer .mini div{background:var(--panel2);border-radius:10px;padding:8px 2px;text-align:center;cursor:pointer;font-size:26px}
+.drawer .mini div:hover{outline:2px solid var(--acc)}
+.drawer .mini div small{display:block;font-size:9px;color:var(--mute)}
+.center{flex:1;display:flex;flex-direction:column;min-width:0}
+.stagewrap{flex:1;display:flex;align-items:center;justify-content:center;padding:12px;min-height:0;background:var(--bg)}
+#stage{position:relative;overflow:hidden;background:#87ceeb;border-radius:8px;box-shadow:0 8px 30px #0008;max-width:100%;max-height:100%}
+.el{position:absolute;cursor:move;user-select:none;touch-action:none;line-height:1;white-space:nowrap}
+.el img{pointer-events:none;display:block}
+.el.sel{outline:2px dashed var(--acc2);outline-offset:4px}
+.layers{width:190px;background:var(--panel);border-left:1px solid var(--line);overflow:auto;padding:10px;flex-shrink:0}
+.layer{display:flex;align-items:center;gap:4px;padding:6px;border-radius:8px;cursor:pointer;font-size:12px}
+.layer.on{background:var(--panel2)}
+.layer .n{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.layer i{font-style:normal;opacity:.7;cursor:pointer}
+.tl{background:var(--panel);border-top:1px solid var(--line);padding:8px 10px}
+.tlrow{display:flex;gap:8px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+.scenes{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.sc{min-width:90px;height:50px;border-radius:8px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:11px;color:#fff;flex-direction:column;flex-shrink:0}
+.sc.on{border-color:var(--acc2)}
+.prop{display:flex;gap:6px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+.prop label{font-size:11px;color:var(--mute);width:100%}
+.prop input[type=range]{padding:0}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+#modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+#modal.show{display:flex}
+.mbox{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;width:100%;max-width:440px;max-height:90vh;overflow:auto}
+.mbox h3{margin-top:0}
+.fld{margin-bottom:12px}
+.fld label{display:block;font-size:12px;color:var(--mute);margin-bottom:4px}
+.rcards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}
+.rc{background:var(--panel2);border:2px solid var(--line);border-radius:14px;padding:12px 6px;text-align:center;cursor:pointer}
+.rc:hover{border-color:var(--acc)}
+.rc .box{margin:0 auto 8px;background:linear-gradient(135deg,var(--acc),var(--acc2));border-radius:6px}
+.rc small{display:block;color:var(--mute);font-size:10px;margin-top:2px}
+#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--acc);color:#fff;padding:10px 16px;border-radius:99px;display:none;z-index:120;max-width:90%;text-align:center}
+#login{position:fixed;inset:0;z-index:80;overflow:auto;color:#f2f4fa;background:radial-gradient(900px 600px at 25% 45%,rgba(91,115,255,.22),transparent 60%),radial-gradient(600px 400px at 85% 95%,rgba(255,224,27,.07),transparent 60%),#090b12}
+#login.off{background:radial-gradient(900px 600px at 25% 45%,rgba(91,115,255,.08),transparent 60%),#04050a}
+#fireflies{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.firefly{position:absolute;left:0;top:0;border-radius:50%;background:#ffe14d;box-shadow:0 0 8px 3px rgba(255,225,77,.7);opacity:.15;animation:ffMove var(--dur) linear var(--delay) infinite,ffGlow 3.2s ease-in-out var(--delay) infinite}
+@keyframes ffMove{0%,100%{transform:translate(var(--x1),var(--y1))}20%{transform:translate(var(--x2),var(--y2))}40%{transform:translate(var(--x3),var(--y3))}60%{transform:translate(var(--x4),var(--y4))}80%{transform:translate(var(--x5),var(--y5))}}
+@keyframes ffGlow{0%,100%{opacity:.12}50%{opacity:.95}}
+.lg-wrap{position:relative;z-index:1;min-height:100%;max-width:1000px;margin:0 auto;padding:24px;display:flex;align-items:center;justify-content:center;gap:48px}
+.lg-scene{width:360px;height:420px;flex-shrink:0}
+.lg-scene svg{width:100%;height:100%;overflow:visible;display:block}
+.lit,.bulb,.chr{transition:opacity .5s}
+#login.off .lit{opacity:0}
+#login.off .bulb{opacity:.12}
+#login.off .chr{opacity:.4}
+.cone{animation:flick 4s ease-in-out infinite}
+@keyframes flick{0%,100%{opacity:1}45%{opacity:.86}}
+.cord{cursor:pointer;transition:transform .2s;transform-box:fill-box}
+.cord.pull{transform:translateY(9px)}
+.bob{animation:bob 3.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.eye{transform-box:fill-box;transform-origin:center;animation:blink 5s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.lg-card{width:100%;max-width:400px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:26px 24px 18px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.lg-brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.12em;color:#ffe01b;font-size:11px;margin-bottom:12px}.lg-logo{width:38px;height:38px;flex-shrink:0;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.lg-card h1{font-size:26px;line-height:1.25;margin-bottom:4px}
+.lg-sub{color:#9aa2b8;font-size:13px;margin-bottom:16px}
+.lg-tabs{display:grid;grid-template-columns:1fr 1fr;background:rgba(0,0,0,.35);border-radius:12px;padding:4px;margin-bottom:14px}
+.lg-tabs button{border:0;background:none;color:#9aa2b8;padding:9px;border-radius:9px;font-weight:600}
+.lg-tabs button.on{background:rgba(255,255,255,.12);color:#fff}
+.fi{display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.38);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:0 12px;margin-bottom:10px;color:#8e96ad;transition:border-color .2s,box-shadow .2s}
+.fi:focus-within{border-color:#ffe01b;color:#ffe01b;box-shadow:0 0 0 3px rgba(255,224,27,.12)}
+.fi svg{flex-shrink:0}
+.fi input{background:none;border:0;border-radius:0;padding:14px 0;color:#f2f4fa;font-size:15px;min-width:0}
+.fi input:focus{border:0}
+.fi .eye{border:0;background:none;padding:6px;font-size:16px;opacity:.7}
+.lg-forgot{display:block;text-align:right;font-size:12px;color:#9aa2b8;cursor:pointer;margin:-2px 2px 10px}
+.lg-go{width:100%;border:0;border-radius:13px;padding:14px;background:#ffe01b;color:#17181c;font-weight:800;font-size:15px;margin-top:2px;box-shadow:0 8px 24px rgba(255,224,27,.25)}
+.lg-go:hover{filter:brightness(1.06)}
+.lg-or{display:flex;align-items:center;gap:10px;color:#707891;font-size:11px;letter-spacing:.06em;margin:16px 0 12px}
+.lg-or:before,.lg-or:after{content:'';flex:1;height:1px;background:rgba(255,255,255,.12)}
+.lg-soc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.lg-soc button{display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 4px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;font-size:13px;color:#f2f4fa}
+.lg-soc button:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25)}
+.lg-guest{width:100%;margin-top:12px;background:none;border:0;color:#9aa2b8;font-size:12.5px;text-decoration:underline;padding:8px}
+.lg-note{font-size:11.5px;color:#d9c25a;margin-top:6px;text-align:center;line-height:1.5}
+.lg-note:empty{display:none}
+.lg-setup{display:block;text-align:center;font-size:11.5px;color:#707891;margin-top:6px;cursor:pointer}
+@media(max-width:880px){
+ .lg-wrap{flex-direction:column;gap:6px;padding:14px 14px 28px;justify-content:flex-start}
+ .lg-scene{width:100%;max-width:300px;height:220px}
+ .lg-card{padding:20px 18px 14px}
+}
+.cut{background:repeating-conic-gradient(#888 0 25%,#666 0 50%) 50%/16px 16px;border-radius:12px}
+#bnav{display:none}
+@media(max-width:800px){
+ #side{display:none!important}
+ #bnav{display:flex;position:fixed;bottom:0;left:0;right:0;background:var(--panel);border-top:1px solid var(--line);z-index:20;overflow-x:auto}
+ #bnav button{flex:1;min-width:60px;border:0;border-radius:0;background:none;font-size:10px;color:var(--mute);display:flex;flex-direction:column;align-items:center;padding:8px 2px}
+ #bnav button span{font-size:20px}
+ #bnav button.on{color:var(--acc2)}
+ #main{padding-bottom:62px}
+ .drawer{display:none;position:absolute;left:64px;bottom:0;height:46%;width:calc(100% - 64px);z-index:10;border-top:2px solid var(--acc)}
+ .drawer.open{display:block}
+ .layers{display:none;position:absolute;right:0;top:0;bottom:0;width:72%;z-index:12;border-left:2px solid var(--acc)}
+ .layers.open{display:block}
+ .grid{grid-template-columns:repeat(auto-fill,minmax(105px,1fr))}
+ .tiles{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="bk-logo" viewBox="0 0 512 512"><defs>
+<linearGradient id="bkBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c1650"/><stop offset="1" stop-color="#090b12"/></linearGradient>
+<linearGradient id="bkB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b6cff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+<radialGradient id="bkGlow"><stop offset="0" stop-color="#ffe14d" stop-opacity=".9"/><stop offset="1" stop-color="#ffe14d" stop-opacity="0"/></radialGradient>
+</defs><rect width="512" height="512" rx="116" fill="url(#bkBg)"/><circle cx="392" cy="126" r="64" fill="url(#bkGlow)"/>
+<path d="M170 130 V382 M170 130 H268 a62 62 0 0 1 0 124 H170 M170 254 H282 a64 64 0 0 1 0 128 H170" fill="none" stroke="url(#bkB)" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M392 96 L400 118 L422 126 L400 134 L392 156 L384 134 L362 126 L384 118 Z" fill="#ffe14d"/></symbol></svg>
+
+<div id="login">
+ <div id="fireflies"></div>
+ <div class="lg-wrap">
+  <div class="lg-scene">
+   <svg viewBox="0 0 360 420" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="लैंप और कार्टून किरदार">
+    <defs>
+     <linearGradient id="coneG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe27a" stop-opacity=".62"/><stop offset="1" stop-color="#ffe27a" stop-opacity=".03"/></linearGradient>
+     <radialGradient id="poolG"><stop offset="0" stop-color="#ffe27a" stop-opacity=".5"/><stop offset="1" stop-color="#ffe27a" stop-opacity="0"/></radialGradient>
+     <radialGradient id="bulbG"><stop offset="0" stop-color="#fffbe0"/><stop offset="1" stop-color="#ffe27a" stop-opacity="0"/></radialGradient>
+    </defs>
+    <g class="lit">
+     <polygon class="cone" points="66,78 114,78 280,398 -100,398" fill="url(#coneG)"/>
+     <ellipse cx="90" cy="398" rx="190" ry="18" fill="url(#poolG)"/>
+    </g>
+    <ellipse cx="180" cy="402" rx="170" ry="9" fill="#000" opacity=".35"/>
+    <!-- लैंप -->
+    <ellipse cx="90" cy="398" rx="44" ry="9" fill="#262935"/>
+    <rect x="86.5" y="74" width="7" height="324" rx="3" fill="#3b3f4e"/>
+    <path d="M38 76 A52 48 0 0 1 142 76 Z" fill="#1b1d26"/>
+    <ellipse class="bulb" cx="90" cy="77" rx="30" ry="9" fill="url(#bulbG)"/>
+    <g id="cord" class="cord" onclick="lampToggle()">
+     <rect x="116" y="70" width="30" height="82" fill="transparent"/>
+     <line x1="130" y1="76" x2="130" y2="128" stroke="#9aa0b4" stroke-width="2"/>
+     <circle cx="130" cy="134" r="6" fill="none" stroke="#ffe27a" stroke-width="3"/>
+    </g>
+    <!-- किरदार -->
+    <g id="chr" class="chr" transform="translate(206,134) scale(.9)">
+     <g class="bob">
+      <rect x="52" y="190" width="22" height="88" rx="9" fill="#2d3140"/>
+      <rect x="86" y="190" width="22" height="88" rx="9" fill="#2d3140"/>
+      <ellipse cx="58" cy="282" rx="18" ry="7.5" fill="#f4f5f8"/>
+      <ellipse cx="102" cy="282" rx="18" ry="7.5" fill="#f4f5f8"/>
+      <rect x="44" y="104" width="72" height="100" rx="22" fill="#c7cbd8"/>
+      <path d="M70 104 L80 134 L90 104 Z" fill="#eef0f6"/>
+      <rect x="72" y="88" width="16" height="22" rx="6" fill="#eab48c"/>
+      <circle cx="44" cy="64" r="6.5" fill="#f2bf98"/><circle cx="116" cy="64" r="6.5" fill="#f2bf98"/>
+      <circle cx="80" cy="62" r="36" fill="#f6c9a4"/>
+      <path d="M43 58 C40 22 120 22 117 58 C110 46 98 41 80 41 C62 41 50 46 43 58 Z" fill="#e9c25f"/>
+      <path d="M60 36 C74 14 108 18 114 44 C104 32 84 28 60 36 Z" fill="#e9c25f"/>
+      <path d="M58 55 Q66 50 73 55" stroke="#b8923a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M87 55 Q94 50 102 55" stroke="#b8923a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <g id="eL" class="eye"><ellipse cx="66" cy="66" rx="7.5" ry="8.5" fill="#fff"/><circle id="pL" cx="66" cy="67" r="4" fill="#2b2f3a"/></g>
+      <g id="eR" class="eye"><ellipse cx="94" cy="66" rx="7.5" ry="8.5" fill="#fff"/><circle id="pR" cx="94" cy="67" r="4" fill="#2b2f3a"/></g>
+      <circle cx="57" cy="79" r="5" fill="#f19a8c" opacity=".35"/><circle cx="103" cy="79" r="5" fill="#f19a8c" opacity=".35"/>
+      <path d="M71 82 Q80 90 89 82" stroke="#8a4b3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <line id="aL" x1="48" y1="124" x2="34" y2="186" stroke="#c7cbd8" stroke-width="17" stroke-linecap="round"/>
+      <line id="aR" x1="112" y1="124" x2="126" y2="186" stroke="#c7cbd8" stroke-width="17" stroke-linecap="round"/>
+      <circle id="hL" cx="34" cy="186" r="9.5" fill="#f6c9a4"/>
+      <circle id="hR" cx="126" cy="186" r="9.5" fill="#f6c9a4"/>
+     </g>
+    </g>
+   </svg>
+  </div>
+
+  <div class="lg-card">
+   <div class="lg-brand"><svg class="lg-logo" aria-hidden="true"><use href="#bk-logo"/></svg><span>BLACKORA ANIMATION AI</span></div>
+   <h1 id="lgT">वापस स्वागत है</h1>
+   <p class="lg-sub" id="lgS">अपनी जानकारी डालकर अपने प्रोजेक्ट खोलो</p>
+   <div class="lg-tabs"><button id="tIn" class="on" onclick="lgMode('in')">लॉगिन</button><button id="tUp" onclick="lgMode('up')">नया अकाउंट</button></div>
+
+   <label class="fi" id="fName" style="display:none">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+    <input id="lname" placeholder="आपका नाम" autocomplete="name">
+   </label>
+   <label class="fi">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+    <input id="lmail" type="email" placeholder="ईमेल" autocomplete="email" inputmode="email">
+   </label>
+   <label class="fi">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>
+    <input id="lpass" type="password" placeholder="पासवर्ड" autocomplete="current-password">
+    <button type="button" class="eye" onmousedown="event.preventDefault()" onclick="lgEye()" aria-label="पासवर्ड दिखाओ">👁</button>
+   </label>
+   <a class="lg-forgot" id="lgForgot" onclick="lgForgot()">पासवर्ड भूल गए?</a>
+   <button class="lg-go" id="lgGo" onclick="lgSubmit()">लॉगिन करो</button>
+
+   <div class="lg-or"><span>या इनसे जारी रखो</span></div>
+   <div class="lg-soc">
+    <button onclick="loginWith('google')"><svg viewBox="0 0 48 48" width="18" height="18"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google</button>
+    <button onclick="loginWith('facebook')"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="#1877f2" d="M24 12a12 12 0 10-13.9 11.85v-8.38H7.08V12h3.04V9.36c0-3 1.8-4.67 4.54-4.67 1.31 0 2.69.23 2.69.23v2.95h-1.52c-1.5 0-1.96.93-1.96 1.88V12h3.34l-.53 3.47h-2.8v8.38A12 12 0 0024 12z"/></svg>Facebook</button>
+    <button onclick="loginPhone()">📱 फ़ोन</button>
+   </div>
+   <button class="lg-guest" onclick="loginLocal()">बिना लॉगिन शुरू करो (सिर्फ़ इस डिवाइस पर)</button>
+   <div class="lg-note" id="lgNote"></div>
+   <a class="lg-setup" id="lgInstall" style="display:none;color:#ffe01b" onclick="installApp()">📲 फ़ोन में ऐप की तरह इंस्टॉल करो</a>
+  </div>
+ </div>
+</div>
+
+<div id="app">
+ <aside id="side"></aside>
+ <div id="main"></div>
+ <section id="editor" style="flex:1"></section>
+</div>
+<nav id="bnav"></nav>
+<div id="modal"><div class="mbox" id="mbox"></div></div>
+<div id="toast"></div>
+
+<script>
+/* ============ भाषा (हिंदी / English / Hinglish) ============ */
+const TR={
+'Home':['होम','Home'],'My Projects':['मेरे प्रोजेक्ट','Mere Projects'],'Templates':['टेम्पलेट','Templates'],'AI Tools':['AI टूल्स','AI Tools'],
+'Library':['लाइब्रेरी','Library'],'Assets':['एसेट्स','Assets'],'Music':['संगीत','Music'],'Characters':['किरदार','Characters'],'Scenes':['सीन','Scenes'],
+'Voices':['आवाज़ें','Voices'],'Settings':['सेटिंग्स','Settings'],'New Project':['नया प्रोजेक्ट','Naya Project'],'Open':['खोलें','Kholo'],
+'Rename':['नाम बदलें','Naam badlo'],'Copy':['कॉपी','Copy'],'Preview':['प्रीव्यू','Preview'],'Export':['एक्सपोर्ट','Export'],'Back':['वापस','Wapas'],
+'Add':['जोड़ें','Jodo'],'Profile':['प्रोफ़ाइल','Profile'],'Theme':['थीम','Theme'],'Language':['भाषा','Bhasha'],'Storage':['स्टोरेज','Storage'],
+'Notifications':['नोटिफ़िकेशन','Notifications'],'Help / Support':['मदद / सपोर्ट','Help / Support'],'Terms & Privacy':['नियम और गोपनीयता','Terms & Privacy'],
+'Logout':['लॉगआउट','Logout'],'Plan':['प्लान','Plan'],'Generate':['बनाओ','Generate'],'Cancel':['रद्द करें','Cancel'],'Close':['बंद करें','Close'],
+'Recent Projects':['हाल के प्रोजेक्ट','Recent Projects'],'Quick Links':['जल्दी खोलें','Quick Links'],'Timeline':['टाइमलाइन','Timeline'],
+'Layers':['लेयर्स','Layers'],'Background':['बैकग्राउंड','Background'],'Text':['टेक्स्ट','Text'],'Voice':['आवाज़','Voice'],'Animation':['एनिमेशन','Animation'],
+'Camera':['कैमरा','Camera'],'Transition':['ट्रांज़िशन','Transition'],'Scene':['सीन','Scene'],'Chars':['किरदार','Chars'],'BG':['बैक','BG'],'Trans':['ट्रांस','Trans'],
+'Anim':['एनिम','Anim'],'My Library':['मेरी लाइब्रेरी','Meri Library'],'Music Library':['म्यूज़िक लाइब्रेरी','Music Library'],'Voice Library':['वॉइस लाइब्रेरी','Voice Library'],
+'Scene Library':['सीन लाइब्रेरी','Scene Library'],'More':['और','More'],'AI':['AI','AI'],'Chars ':['किरदार','Chars'],'Total':['कुल','Total'],'Duration':['समय','Duration']
+};
+function t(s){const r=TR[s];if(!r)return s;return S.lang==='en'?s:S.lang==='hl'?r[1]:r[0]}
+
+/* ============ डेटा ============ */
+const ASSET_CATS={
+ Buildings:['🏠','🏡','🏢','🏰','🛖','⛪','🕌','🏫','🏪','🏭'],
+ Ground:['🟩','🟫','🌾','🪨','🏜️','⛰️'],
+ 'Animated Sky':['☀️','🌙','⭐','☁️','🌈','⛅','🌧️','⚡','❄️','🌤️'],
+ Magic:['✨','🪄','🔮','🧙','🧚','🦄','🐉','💫'],
+ Blankets:['🛏️','🧣','🧶'],
+ Props:['🪑','🔑','🕯️','🪔','🎒','📦','🧳','🪣','🔦','🪜'],
+ 'Digital Assets':['💻','📱','🖥️','📺','🎮','🎧','📷','🔋'],
+ Shapes:['🔴','🟦','🔺','⬛','🟡','⭐','❤️','🔶'],
+ Animals:['🐶','🐱','🐄','🐘','🦁','🐒','🐇','🐢','🐴','🐑'],
+ Birds:['🐦','🦜','🦆','🦉','🦅','🕊️','🐓','🦚'],
+ Vehicles:['🚗','🚌','🚲','🛵','🚂','✈️','🚁','🚜','⛵','🚀'],
+ Furniture:['🛋️','🪑','🛏️','🚪','🪞','🗄️'],
+ Food:['🍎','🍌','🍕','🍔','🍰','🥭','🍚','☕','🍉','🍪'],
+ Nature:['🌳','🌲','🌴','🌸','🌻','🍄','🌵','🍃','🌊','🔥']
+};
+const CHARS={Boys:['👦','🧒','👨','🧔','🤴'],Girls:['👧','👩','👸','🧕'],Elders:['👴','👵'],Fantasy:['🧙','🧛','🧜','🧞','🦸','🥷'],Cartoon:['🤖','👽','👻','🤡','🐻']};
+const MUSIC={
+ Intense:['Thunder Run','Final Battle'],Mystical:['Moon Whisper','Enchanted Wood'],'Pop-Romantic':['Dil Ki Baat','Love Pop'],
+ Bright:['Sunny Day','Happy Steps'],Romance:['Pehla Pyaar','Soft Eyes'],Lullaby:['Neend Aaye','Chanda Mama'],
+ Mysterious:['Hidden Door','Fog Walk'],Rhymes:['Machli Jal Ki','Twinkle Beat'],Suspense:['Footsteps','Ticking'],
+ Village:['Gaon Ki Subah','Khet Khalihan'],Horror:['Dark Hall','Whispers'],New:['Fresh Drop 1','Fresh Drop 2']
+};
+const SCENEBG={
+ Village:'linear-gradient(#87ceeb 60%,#6bbf59 60%)',City:'linear-gradient(#9db4d6 65%,#555 65%)',Room:'linear-gradient(#e7d6b8 70%,#a97c50 70%)',
+ Forest:'linear-gradient(#a8d8a0 55%,#2d6a2d 55%)',Horror:'linear-gradient(#1a1a2e 65%,#111 65%)',Fantasy:'linear-gradient(#c084fc 55%,#fbcfe8 55%)',
+ School:'linear-gradient(#bfdbfe 60%,#d6c7a1 60%)',Shop:'linear-gradient(#fde68a 65%,#92400e 65%)'
+};
+const VOICES=[
+ {id:'v0',n:'Aarav',g:'Male',l:'Hindi',e:'Happy'},{id:'v1',n:'Vikram',g:'Male',l:'Hindi',e:'Serious'},{id:'v2',n:'Priya',g:'Female',l:'Hindi',e:'Calm'},
+ {id:'v3',n:'Anaya',g:'Female',l:'English',e:'Happy'},{id:'v4',n:'Chhotu',g:'Child',l:'Hindi',e:'Excited'},{id:'v5',n:'Mini',g:'Child',l:'English',e:'Cute'},
+ {id:'v6',n:'Jack',g:'Male',l:'English',e:'Angry'},{id:'v7',n:'Sara',g:'Female',l:'English',e:'Sad'}
+];
+const AITOOLS=[['🖼️','AI Image'],['🧩','AI PNG Asset'],['👤','AI Character'],['🎞️','AI Video'],['🎙️','AI Voice'],['🖌️','AI Thumbnail'],['📖','Story Generator'],['📝','Script Generator'],['🎬','Scene Generator'],['🌄','Background Generator']];
+const AIDEF={
+ 'AI Image':{w:1024,h:576,suf:', 2D cartoon illustration, colorful, clean',ph:'जैसे: गाँव में बारिश, बच्चे खेल रहे हैं'},
+ 'AI PNG Asset':{w:512,h:512,suf:', single object, 2D cartoon sticker style, flat colors, isolated on plain white background',cut:1,ph:'जैसे: लाल रंग की पुरानी साइकिल'},
+ 'AI Character':{w:512,h:512,suf:', cute 2D cartoon character, full body, front view, flat colors, isolated on plain white background',cut:1,ph:'जैसे: छोटा शरारती लड़का, पीली टी-शर्ट'},
+ 'AI Thumbnail':{w:1280,h:720,suf:', eye-catching YouTube thumbnail style, vibrant 2D cartoon',ph:'जैसे: शेर और चूहे की कहानी'},
+ 'Background Generator':{w:1280,h:720,suf:', 2D cartoon background scenery, no people, wide',ph:'जैसे: सुबह का हरा-भरा गाँव'}
+};
+
+/* ============ स्टेट ============ */
+const DEF={user:null,method:null,theme:'dark',lang:'hi',projects:[],favs:{},myAssets:[],myChars:[],myVoices:[],myMusic:[],myTemplates:[],myScenes:[],generated:[],trash:[],recent:[],
+ notifs:[{id:'n1',t:'🎉 Blackora में स्वागत है! सभी फ़ीचर बिल्कुल मुफ़्त हैं।',read:false},{id:'n2',t:'💡 सुझाव: "AI टूल्स" से अपना किरदार और बैकग्राउंड बनाओ।',read:false},{id:'n3',t:'🎬 एडिटर में "एक्सपोर्ट" से अपनी वीडियो डाउनलोड करो।',read:false}]};
+let S;
+try{S=Object.assign({},DEF,JSON.parse(localStorage.getItem('blackora_v1')||'{}'))}catch(e){S=Object.assign({},DEF)}
+Object.keys(S.favs).forEach(k=>{if(typeof S.favs[k]!=='object')delete S.favs[k]});
+function save(){try{localStorage.setItem('blackora_v1',JSON.stringify(S))}catch(e){toast('स्टोरेज भर गया — कुछ पुराने आइटम हटाओ')}}
+let view='home',aState={cat:'Buildings',q:''},cState={cat:'Boys'},mState={cat:'Intense'},vState={g:'All'};
+let P=null,sel=null,undoStack=[],redoStack=[],etab='assets',playing=false,playT=null,dOpen=false,lastGen=null;
+const mob=()=>innerWidth<=800;
+
+/* ============ हेल्पर ============ */
+const $=s=>document.querySelector(s);
+function toast(m){const e=$('#toast');e.textContent=m;e.style.display='block';clearTimeout(e._t);e._t=setTimeout(()=>e.style.display='none',2500)}
+function uid(){return Math.random().toString(36).slice(2,9)}
+function modal(h){$('#mbox').innerHTML=h;$('#modal').classList.add('show')}
+function closeModal(){$('#modal').classList.remove('show')}
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+function addRecent(x){S.recent=[x,...S.recent.filter(r=>r!==x)].slice(0,12)}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function thumb(x,big){return x.img?`<img class="thimg" src="${x.img}" ${big?'style="width:110px;height:110px"':''}>`:`<div class="em" ${big?'style="font-size:90px"':''}>${x.em}</div>`}
+
+/* ============ लॉगिन ============ */
+/* असली लॉगिन (Google / Facebook / फ़ोन / ईमेल) Firebase से चलता है। */
+const BUILT_IN_CONFIG={
+  apiKey:"AIzaSyA98QxfkQ-U_4Lwndz8p1GoEhL_B6lSBU0",
+  authDomain:"blackora-ai.firebaseapp.com",
+  projectId:"blackora-ai",
+  storageBucket:"blackora-ai.firebasestorage.app",
+  messagingSenderId:"573695584077",
+  appId:"1:573695584077:web:427506ac6f67afa293f904",
+  measurementId:"G-X0JF3G98GS"
+}; /* Blackora की Firebase (web) config — यह सार्वजनिक चाबी है, गुप्त नहीं */
+function getFbConfig(){
+ if(BUILT_IN_CONFIG)return BUILT_IN_CONFIG;
+ try{return JSON.parse(localStorage.getItem('blackora_fb')||'null')}catch(e){return null}
+}
+const onFile=()=>location.protocol==='file:'||location.protocol==='content:'||location.protocol==='about:';
+function fbReady(){return new Promise((res,rej)=>{
+ const cfg=getFbConfig();
+ if(!cfg){rej('noconfig');return}
+ if(window.firebase&&firebase.apps&&firebase.apps.length){res();return}
+ const load=src=>new Promise((a,b)=>{const s=document.createElement('script');s.src=src;s.onload=a;s.onerror=b;document.head.appendChild(s)});
+ const base='https://www.gstatic.com/firebasejs/10.12.2/';
+ load(base+'firebase-app-compat.js').then(()=>load(base+'firebase-auth-compat.js')).then(()=>{if(!firebase.apps.length)firebase.initializeApp(cfg);res()}).catch(()=>rej('load'));
+})}
+async function fbOK(){try{await fbReady();return true}catch(e){if(e==='load')toast('इंटरनेट जाँचो — लॉगिन सेवा लोड नहीं हुई');else needSetup();return false}}
+function needSetup(){modal(`<h3>🔐 Google लॉगिन चालू करना बाकी है</h3><p style="color:var(--mute);margin-bottom:12px">लॉगिन का पूरा कोड तैयार है। बस Google की मुफ़्त सेवा <b>Firebase</b> की एक चाबी (config) ऐप में डालनी है। यह चाबी गुप्त नहीं होती।</p><p style="margin-bottom:12px">मैं आपको एक-एक स्टेप में करवा दूँगा — चैट में मुझसे पूछो।</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pri" onclick="fbSetupModal()">चाबी डालो</button><button onclick="closeModal()">बंद करो</button></div>`)}
+function fileWarn(){modal(`<h3>🌐 इसे वेबसाइट पर रखना होगा</h3><p style="color:var(--mute);margin-bottom:12px">Google लॉगिन तब नहीं चलता जब फ़ाइल सीधे फ़ोन/कंप्यूटर से खोली गई हो। इसके लिए Blackora को एक फ्री वेबसाइट लिंक पर रखना होता है।</p><p style="margin-bottom:12px">यह मैं आपको एक-एक स्टेप में करवा दूँगा।</p><button class="pri" onclick="closeModal()">ठीक है</button>`)}
+function fbSetupModal(){
+ const has=!!getFbConfig();
+ modal(`<h3>⚙ Firebase सेटअप</h3><p style="color:var(--mute);font-size:12px;margin-bottom:8px">Firebase कंसोल से मिला पूरा <b>firebaseConfig</b> यहाँ चिपकाओ।</p><p style="color:#f5b942;font-size:12px;margin-bottom:8px">⚠️ "Service account" या "private key" वाली फ़ाइल मत चिपकाना — वह गुप्त होती है। सिर्फ़ <b>Web app</b> वाली config चाहिए (apiKey, authDomain, projectId… वाली)।</p><textarea id="fbcfg" rows="8" placeholder='const firebaseConfig = {\n  apiKey: "...",\n  authDomain: "...",\n  projectId: "...",\n  ...\n};'></textarea><p style="font-size:12px;margin:8px 0;color:${has?'var(--ok)':'var(--mute)'}">${has?'✅ अभी एक config सेव है':'अभी कोई config सेव नहीं है'}</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pri" onclick="fbSaveCfg()">सेव करो</button>${has?'<button onclick="localStorage.removeItem(\'blackora_fb\');closeModal();toast(\'हटा दिया\')">हटाओ</button>':''}<button onclick="closeModal()">बंद करो</button></div>`);
+}
+function fbParseCfg(raw){
+ const m=String(raw).match(/\{[\s\S]*\}/);if(!m)return null;
+ const txt=m[0].replace(/^\s*\/\/.*$/gm,'').replace(/'/g,'"').replace(/([{,]\s*)([A-Za-z_]\w*)\s*:/g,'$1"$2":').replace(/,\s*}/g,'}');
+ try{const c=JSON.parse(txt);return(c.apiKey&&c.authDomain&&c.projectId)?c:null}catch(e){return null}
+}
+function fbSaveCfg(){
+ const raw=$('#fbcfg').value;
+ if(/private_key|service_account|client_x509_cert_url|firebase-adminsdk/.test(raw)){$('#fbcfg').value='';toast('⚠️ यह गलत फ़ाइल है (प्राइवेट चाबी)। इसे कहीं मत चिपकाओ — "Web app" वाली firebaseConfig चाहिए');return}
+ const c=fbParseCfg(raw);
+ if(!c){toast('config पढ़ नहीं पाया — { से } तक पूरा चिपकाओ');return}
+ localStorage.setItem('blackora_fb',JSON.stringify(c));closeModal();toast('✅ config सेव हो गई');
+}
+function fbErr(e){
+ const c=(e&&e.code)||'';
+ const M={'auth/configuration-not-found':'Firebase में Authentication अभी चालू नहीं है — Build → Authentication → "Get started" दबाओ','auth/api-key-not-valid.-please-pass-a-valid-api-key.':'config की apiKey गलत है — दोबारा सही config डालो','auth/invalid-api-key':'config की apiKey गलत है — दोबारा सही config डालो','auth/invalid-credential':'ईमेल या पासवर्ड गलत है','auth/wrong-password':'पासवर्ड गलत है','auth/user-not-found':'इस ईमेल का अकाउंट नहीं मिला — "नया अकाउंट" बनाओ','auth/email-already-in-use':'यह ईमेल पहले से है — लॉगिन करो','auth/weak-password':'पासवर्ड कम से कम 6 अक्षर का रखो','auth/invalid-email':'ईमेल सही नहीं है','auth/popup-closed-by-user':'लॉगिन बीच में बंद हो गया','auth/cancelled-popup-request':'लॉगिन बीच में बंद हो गया','auth/popup-blocked':'ब्राउज़र ने पॉप-अप रोक दिया — पॉप-अप की इजाज़त दो','auth/unauthorized-domain':'इस वेबसाइट को Firebase → Authentication → Settings → Authorized domains में जोड़ना है','auth/operation-not-allowed':'Firebase में यह लॉगिन तरीका अभी चालू नहीं है','auth/network-request-failed':'इंटरनेट की दिक्कत है','auth/operation-not-supported-in-this-environment':'यहाँ से लॉगिन नहीं चलेगा — इसे वेबसाइट (https) पर खोलना होगा','auth/too-many-requests':'बहुत कोशिशें हो गईं — थोड़ी देर बाद करो','auth/invalid-phone-number':'फ़ोन नंबर सही नहीं है (+91 के साथ लिखो)','auth/invalid-verification-code':'OTP गलत है'};
+ return M[c]||('लॉगिन नहीं हो पाया'+(c?' ('+c+')':''));
+}
+async function loginWith(p){
+ if(!(await fbOK()))return;
+ if(onFile()){fileWarn();return}
+ try{
+  const prov=p==='google'?new firebase.auth.GoogleAuthProvider():new firebase.auth.FacebookAuthProvider();
+  if(p==='google')prov.setCustomParameters({prompt:'select_account'});
+  const r=await firebase.auth().signInWithPopup(prov);
+  doLogin(r.user.displayName||r.user.email||'User',p);
+ }catch(e){toast(fbErr(e))}
+}
+let lgM='in';
+function lgMode(m){
+ lgM=m;$('#tIn').classList.toggle('on',m==='in');$('#tUp').classList.toggle('on',m==='up');
+ $('#fName').style.display=m==='up'?'':'none';$('#lgForgot').style.visibility=m==='in'?'visible':'hidden';
+ $('#lgT').textContent=m==='in'?'वापस स्वागत है':'नया अकाउंट बनाओ';
+ $('#lgS').textContent=m==='in'?'अपनी जानकारी डालकर अपने प्रोजेक्ट खोलो':'बिल्कुल मुफ़्त — कोई सब्सक्रिप्शन नहीं';
+ $('#lgGo').textContent=m==='in'?'लॉगिन करो':'अकाउंट बनाओ';
+ $('#lpass').autocomplete=m==='in'?'current-password':'new-password';
+}
+async function lgSubmit(){
+ const mail=$('#lmail').value.trim(),pw=$('#lpass').value,nm=$('#lname').value.trim();
+ if(!mail||!pw){toast('ईमेल और पासवर्ड दोनों भरो');return}
+ if(lgM==='up'&&!nm){toast('अपना नाम लिखो');return}
+ if(lgM==='up'&&pw.length<6){toast('पासवर्ड कम से कम 6 अक्षर का रखो');return}
+ if(!(await fbOK()))return;
+ try{
+  let r;
+  if(lgM==='up'){r=await firebase.auth().createUserWithEmailAndPassword(mail,pw);await r.user.updateProfile({displayName:nm})}
+  else r=await firebase.auth().signInWithEmailAndPassword(mail,pw);
+  doLogin(r.user.displayName||nm||mail.split('@')[0],'email');
+ }catch(e){toast(fbErr(e))}
+}
+async function lgForgot(){
+ const mail=$('#lmail').value.trim();if(!mail){toast('पहले ऊपर अपना ईमेल लिखो');return}
+ if(!(await fbOK()))return;
+ try{await firebase.auth().sendPasswordResetEmail(mail);toast('✅ पासवर्ड बदलने का लिंक ईमेल पर भेज दिया')}catch(e){toast(fbErr(e))}
+}
+function lgEye(){const p=$('#lpass');p.type=p.type==='password'?'text':'password';shyT=(p.type==='password'&&lgFocus===p)?1:0}
+let confirmation=null;
+async function loginPhone(){
+ if(!(await fbOK()))return;
+ if(onFile()){fileWarn();return}
+ modal(`<h3>📱 फ़ोन नंबर से लॉगिन</h3><div class="fld"><label>नंबर (देश कोड के साथ, जैसे +919876543210)</label><input id="ph" type="tel" placeholder="+91"></div><button class="pri" onclick="sendOTP()">OTP भेजो</button><div id="recap"></div>
+ <div id="otpbox" style="display:none;margin-top:12px"><div class="fld"><label>OTP लिखो</label><input id="otp" inputmode="numeric"></div><button class="pri" onclick="verifyOTP()">लॉगिन करो</button></div>`);
+}
+async function sendOTP(){try{const v=new firebase.auth.RecaptchaVerifier('recap',{size:'invisible'});confirmation=await firebase.auth().signInWithPhoneNumber($('#ph').value.trim(),v);$('#otpbox').style.display='block';toast('OTP भेज दिया')}catch(e){toast(fbErr(e))}}
+async function verifyOTP(){try{const r=await confirmation.confirm($('#otp').value.trim());closeModal();doLogin(r.user.phoneNumber||'User','phone')}catch(e){toast(fbErr(e))}}
+function loginLocal(){
+ const n=($('#lname').value||'').trim()||($('#lmail').value||'').split('@')[0].trim()||(prompt('अपना नाम लिखो')||'').trim();
+ if(!n){toast('नाम चाहिए');return}
+ doLogin(n,'local');
+}
+function doLogin(n,m){S.user=n;S.method=m;save();$('#login').style.display='none';go('home')}
+function logout(){try{firebase.auth().signOut()}catch(e){}S.user=null;save();location.reload()}
+
+/* ऐप इंस्टॉल (PWA) + ऑफ़लाइन सपोर्ट */
+let deferredInstall=null;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;const b=document.getElementById('lgInstall');if(b)b.style.display='block'});
+addEventListener('appinstalled',()=>{deferredInstall=null;const b=document.getElementById('lgInstall');if(b)b.style.display='none';toast('✅ Blackora इंस्टॉल हो गया')});
+function installApp(){
+ if(window.matchMedia&&matchMedia('(display-mode: standalone)').matches){toast('ऐप पहले से इंस्टॉल है');return}
+ if(deferredInstall){deferredInstall.prompt();deferredInstall.userChoice.finally(()=>{deferredInstall=null});return}
+ modal(`<h3>📲 फ़ोन में इंस्टॉल करो</h3><p style="color:var(--mute);margin-bottom:10px"><b>Android (Chrome):</b> ऊपर दाएँ ⋮ मेन्यू → <b>"Install app"</b> या <b>"Add to Home screen"</b> दबाओ।</p><p style="color:var(--mute);margin-bottom:12px"><b>iPhone (Safari):</b> नीचे Share बटन → <b>"Add to Home Screen"</b>।</p><p style="font-size:12px;color:var(--mute);margin-bottom:12px">यह तभी चलेगा जब ऐप असली वेबसाइट लिंक (https) से खुली हो।</p><button onclick="closeModal()">ठीक है</button>`);
+}
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+
+/* लैंप + किरदार + जुगनू */
+const rnd=(a,b)=>a+Math.random()*(b-a);
+function createFireflies(){
+ const box=$('#fireflies');box.innerHTML='';
+ for(let i=0;i<22;i++){
+  const d=document.createElement('span');d.className='firefly';const s=rnd(3,7);
+  d.style.width=d.style.height=s+'px';
+  d.style.setProperty('--dur',rnd(35,65).toFixed(1)+'s');d.style.setProperty('--delay','-'+rnd(0,30).toFixed(1)+'s');
+  for(let n=1;n<=5;n++){d.style.setProperty('--x'+n,rnd(0,100).toFixed(1)+'vw');d.style.setProperty('--y'+n,rnd(0,100).toFixed(1)+'vh')}
+  box.appendChild(d);
+ }
+}
+function lampToggle(){$('#login').classList.toggle('off');const c=$('#cord');c.classList.add('pull');setTimeout(()=>c.classList.remove('pull'),220)}
+const HAND={idle:[[34,186],[126,186]],shy:[[67,68],[93,68]]};
+let shyT=0,shyV=0,lkX=0,lkY=0,tgX=0,tgY=0,lgFocus=null;
+function look(px,py,full){
+ const a=$('#eL').getBoundingClientRect(),b=$('#eR').getBoundingClientRect();
+ const cx=(a.left+b.right)/2,cy=a.top+a.height/2,dx=px-cx,dy=py-cy,d=Math.hypot(dx,dy)||1,k=full?1:Math.min(1,d/250);
+ tgX=dx/d*3.4*k;tgY=dy/d*3*k;
+}
+function lookInput(el){const r=el.getBoundingClientRect();look(r.left+Math.min(r.width-20,14+el.value.length*8),r.top+r.height/2,true)}
+const CE={};
+function chrLoop(){
+ const L=$('#login');if(!L||L.style.display==='none')return;
+ if(!CE.aL){['aL','aR','hL','hR','pL','pR'].forEach(k=>CE[k]=$('#'+k))}
+ shyV+=(shyT-shyV)*.16;lkX+=(tgX-lkX)*.2;lkY+=(tgY-lkY)*.2;
+ [['aL','hL','pL',0],['aR','hR','pR',1]].forEach(([a,h,p,i])=>{
+  const I=HAND.idle[i],T=HAND.shy[i],x=I[0]+(T[0]-I[0])*shyV,y=I[1]+(T[1]-I[1])*shyV;
+  CE[a].setAttribute('x2',x.toFixed(2));CE[a].setAttribute('y2',y.toFixed(2));
+  CE[h].setAttribute('cx',x.toFixed(2));CE[h].setAttribute('cy',y.toFixed(2));
+  CE[p].setAttribute('transform','translate('+lkX.toFixed(2)+' '+lkY.toFixed(2)+')');
+ });
+ requestAnimationFrame(chrLoop);
+}
+function lgBind(){
+ document.addEventListener('pointermove',e=>{if(!lgFocus)look(e.clientX,e.clientY)});
+ ['lname','lmail','lpass'].forEach(id=>{
+  const el=$('#'+id);
+  el.addEventListener('focus',()=>{lgFocus=el;lookInput(el);shyT=(id==='lpass'&&el.type==='password')?1:0});
+  el.addEventListener('blur',()=>{lgFocus=null;shyT=0});
+  el.addEventListener('input',()=>lookInput(el));
+  el.addEventListener('keydown',e=>{if(e.key==='Enter')lgSubmit()});
+ });
+}
+createFireflies();lgBind();chrLoop();look(innerWidth*.7,innerHeight*.5);
+if(onFile())$('#lgNote').textContent='ℹ️ यह फ़ाइल सीधे खोली गई है — Google लॉगिन के लिए इसे वेबसाइट लिंक पर रखना होगा।';
+if(S.user)$('#login').style.display='none';
+if(S.theme==='light')document.body.classList.add('light');
+
+/* ============ नेविगेशन ============ */
+const NAV=[['home','🏠','Home'],['projects','📁','My Projects'],['templates','🧰','Templates'],['aitools','🤖','AI Tools'],['library','📚','Library'],['assets','🖼️','Assets'],['music','🎵','Music'],['characters','👤','Characters'],['scenes','🎬','Scenes'],['voices','🎙️','Voices'],['settings','⚙️','Settings']];
+function renderNav(){
+ $('#side').innerHTML='<div class="logo"><svg class="sb-logo" aria-hidden="true"><use href="#bk-logo"/></svg><span>Blackora AI</span></div>'+NAV.map(n=>`<button class="nav ${view===n[0]?'on':''}" onclick="go('${n[0]}')"><span>${n[1]}</span>${t(n[2])}</button>`).join('')+'<div class="sp"></div><button class="pri" onclick="newProject()">＋ '+t('New Project')+'</button>';
+ const m=[['home','🏠','Home'],['aitools','🤖','AI'],['assets','🖼️','Assets'],['characters','👤','Characters'],['music','🎵','Music'],['library','📚','Library'],['settings','⚙️','More']];
+ $('#bnav').innerHTML=m.map(n=>`<button class="${view===n[0]?'on':''}" onclick="go('${n[0]}')"><span>${n[1]}</span>${t(n[2])}</button>`).join('');
+}
+function go(v){
+ view=v;
+ if(v==='editor'){$('#main').style.display='none';$('#editor').classList.add('show');$('#side').style.display='none';$('#bnav').style.display='none';renderEditor();return}
+ $('#editor').classList.remove('show');$('#main').style.display='';$('#side').style.display='';$('#bnav').style.display='';
+ stopPlay();renderNav();
+ const R={home,projects,templates,aitools,library,assets,music,characters,scenes,voices,settings};
+ $('#main').innerHTML=R[v]();$('#main').scrollTop=0;
+}
+const topbar=(ti,extra='')=>`<div class="top"><h2>${ti}</h2>${extra}</div>`;
+
+/* ============ स्क्रीन ============ */
+function home(){
+ return topbar('नमस्ते, '+esc(S.user||'')+' 👋','<span class="chip">🆓 सब कुछ मुफ़्त</span>')+`<div class="wrap">
+ <div class="hero"><h1>अपनी 2D कार्टून वीडियो बनाओ</h1><p>सीन, किरदार, आवाज़, संगीत — सब एक जगह, बिना किसी पेमेंट के।</p>
+ <button class="pri" onclick="newProject()">＋ ${t('New Project')}</button></div>
+ <h3>${t('AI Tools')}</h3><div class="tiles">${AITOOLS.slice(0,6).map(a=>`<div class="tile" onclick="aiTool('${a[1]}')"><div class="em">${a[0]}</div><b>${a[1]}</b></div>`).join('')}</div>
+ <h3>${t('Recent Projects')}</h3>${projList(S.projects.slice(0,4))}
+ <h3>${t('Quick Links')}</h3><div class="tiles">${[['🖼️','assets','Assets'],['🎵','music','Music'],['👤','characters','Characters'],['🎙️','voices','Voices'],['🎬','scenes','Scenes'],['📚','library','Library']].map(a=>`<div class="tile" onclick="go('${a[1]}')"><div class="em">${a[0]}</div><b>${t(a[2])}</b></div>`).join('')}</div></div>`;
+}
+function projList(arr){
+ if(!arr.length)return '<div class="card" style="color:var(--mute)">अभी कोई प्रोजेक्ट नहीं है। "नया प्रोजेक्ट" दबाओ।</div>';
+ return '<div class="list">'+arr.map(p=>`<div class="it"><div style="font-size:26px">🎞️</div><div class="t"><b>${esc(p.name)}</b><br><small>${p.scenes.length} सीन • ${p.ratio} • ${new Date(p.t).toLocaleDateString()}</small></div>
+ <button class="sm" onclick="openProject('${p.id}')">${t('Open')}</button><button class="sm" onclick="renameProject('${p.id}')">${t('Rename')}</button><button class="sm" onclick="dupProject('${p.id}')">${t('Copy')}</button><button class="sm" onclick="delProject('${p.id}')">🗑️</button></div>`).join('')+'</div>';
+}
+function projects(){return topbar(t('My Projects'),`<button class="pri sm" onclick="newProject()">＋ ${t('New Project')}</button>`)+`<div class="wrap">${projList(S.projects)}</div>`}
+function templates(){
+ return topbar(t('Templates'))+`<div class="wrap"><div class="tiles">${Object.keys(SCENEBG).map(k=>`<div class="tile" onclick="newProject('${k}')"><div style="height:60px;border-radius:10px;background:${SCENEBG[k]}"></div><b>${k}</b></div>`).join('')}</div>
+ <h3>मेरे टेम्पलेट</h3>${S.myTemplates.length?'<div class="list">'+S.myTemplates.map(x=>`<div class="it"><div class="t"><b>${esc(x.name)}</b></div><button class="sm pri" onclick="useTemplate('${x.id}')">इस्तेमाल करो</button><button class="sm" onclick="delMy('myTemplates','${x.id}')">🗑</button></div>`).join('')+'</div>':'<div class="card" style="color:var(--mute)">एडिटर में "टेम्पलेट सेव" दबाओ, यहाँ दिखेगा</div>'}</div>`;
+}
+function aitools(){return topbar(t('AI Tools'),'<span class="chip">🆓 मुफ़्त और अनलिमिटेड</span>')+`<div class="wrap"><div class="tiles">${AITOOLS.map(a=>`<div class="tile" onclick="aiTool('${a[1]}')"><div class="em">${a[0]}</div><b>${a[1]}</b></div>`).join('')}</div></div>`}
+
+/* ============ AI टूल्स (असली) ============ */
+const aiImgURL=(p,w,h,seed)=>'https://image.pollinations.ai/prompt/'+encodeURIComponent(p)+'?width='+w+'&height='+h+'&seed='+seed+'&nologo=true';
+function aiTool(name){
+ if(name==='AI Voice'){aiVoiceModal();return}
+ const d=AIDEF[name];
+ const isText=name==='Story Generator'||name==='Script Generator';
+ const isVid=name==='AI Video'||name==='Scene Generator';
+ const ph=d?d.ph:isText?'जैसे: एक चालाक लोमड़ी और कौवे की कहानी':'जैसे: दोस्ती की कहानी, 3 सीन';
+ modal(`<h3>🤖 ${name}</h3><div class="fld"><label>क्या बनाना है? लिखो (हिंदी या English)</label><textarea id="aip" rows="3" placeholder="${ph}"></textarea></div>
+ ${name==='AI Thumbnail'?'<div class="fld"><label>थंबनेल पर लिखा टेक्स्ट (ज़रूरी नहीं)</label><input id="ath" placeholder="जैसे: शेर और चूहा"></div>':''}
+ <div style="display:flex;gap:8px;margin-bottom:12px"><button class="pri" onclick="${isText?`genText('${name}')`:isVid?`genVideo('${name}')`:`genImage('${name}')`}">${t('Generate')}</button><button onclick="closeModal()">${t('Close')}</button></div>
+ <div id="aires"></div>`);
+}
+function loadImg(src){return new Promise(r=>{if(imgCache[src])return r(imgCache[src]);const i=new Image();i.crossOrigin='anonymous';i.onload=()=>{imgCache[src]=i;r(i)};i.onerror=()=>r(null);i.src=src})}
+const imgCache={};
+function cutout(im){
+ try{
+  const sc=Math.min(1,384/Math.max(im.width,im.height));const c=document.createElement('canvas');c.width=Math.round(im.width*sc);c.height=Math.round(im.height*sc);
+  const x=c.getContext('2d');x.drawImage(im,0,0,c.width,c.height);const d=x.getImageData(0,0,c.width,c.height),p=d.data;
+  for(let i=0;i<p.length;i+=4){const m=Math.min(p[i],p[i+1],p[i+2]);if(m>238)p[i+3]=0;else if(m>215)p[i+3]=Math.round((238-m)/23*255)}
+  x.putImageData(d,0,0);return c.toDataURL('image/png');
+ }catch(e){return null}
+}
+async function genImage(name){
+ const pr=$('#aip').value.trim();if(!pr){toast('पहले लिखो कि क्या बनाना है');return}
+ const d=AIDEF[name],url=aiImgURL(pr+d.suf,d.w,d.h,Math.floor(Math.random()*1e6));
+ $('#aires').innerHTML='<p>⏳ AI फ़ोटो बना रहा है… 10-30 सेकंड लग सकते हैं</p>';
+ let im=await loadImg(url),src=url;
+ if(!im){
+  const ok=await new Promise(r=>{const i=new Image();i.onload=()=>r(true);i.onerror=()=>r(false);i.src=url});
+  if(!ok){$('#aires').innerHTML='<p style="color:var(--bad)">❌ फ़ोटो नहीं बनी। इंटरनेट देखो और दोबारा कोशिश करो।</p>';return}
+ }else{
+  if(d.cut){const c=cutout(im);if(c)src=c}
+  if(name==='AI Thumbnail'){const c=document.createElement('canvas');c.width=640;c.height=360;const x=c.getContext('2d');x.drawImage(im,0,0,640,360);const ti=($('#ath')&&$('#ath').value.trim())||'';
+   if(ti){x.font='bold 54px sans-serif';x.textAlign='center';x.lineWidth=8;x.strokeStyle='#000';x.fillStyle='#ffe14d';x.strokeText(ti,320,320);x.fillText(ti,320,320)}
+   try{src=c.toDataURL('image/jpeg',.8)}catch(e){}}
+ }
+ lastGen={type:name,prompt:pr,src,url};
+ S.generated.unshift({id:uid(),type:name,prompt:pr,thumb:name==='AI Thumbnail'?src:url,t:Date.now()});save();
+ const btn=(a,l)=>`<button class="sm" onclick="${a}">${l}</button>`;
+ let acts='';
+ if(name==='AI Image')acts=btn("saveGen('myAssets')",'💾 Assets में सेव')+btn('genAsBG()','🌄 सीन का बैकग्राउंड बनाओ');
+ if(name==='AI PNG Asset')acts=btn("saveGen('myAssets')",'💾 Assets में सेव')+btn("saveGen('myAssets',1)",'🎬 सीन में जोड़ो');
+ if(name==='AI Character')acts=btn("saveGen('myChars')",'💾 Characters में सेव')+btn("saveGen('myChars',1)",'🎬 सीन में जोड़ो');
+ if(name==='AI Thumbnail')acts='';
+ if(name==='Background Generator')acts=btn('genAsBG()','🌄 सीन का बैकग्राउंड बनाओ');
+ $('#aires').innerHTML=`<div class="${d.cut?'cut':''}" style="text-align:center"><img src="${src}" style="max-width:100%;border-radius:12px"></div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">${acts}<a download="blackora-ai.${src.startsWith('data:image/jpeg')?'jpg':'png'}" href="${src}" target="_blank"><button class="sm">⬇ डाउनलोड</button></a></div><p style="color:var(--mute);font-size:11px;margin-top:8px">${name==='AI Thumbnail'?'थंबनेल "Generated Thumbnails" में सेव हो गया।':'यह "My Library" में भी सेव हो गया।'}</p>`;
+}
+function saveGen(key,toScene){
+ if(!lastGen)return;
+ const it={id:uid(),em:'🖼️',name:lastGen.prompt.slice(0,14),img:lastGen.src};
+ S[key].unshift(it);save();
+ if(toScene){closeModal();addMine(key,it.id)}else toast('✅ सेव हो गया');
+}
+function genAsBG(){
+ if(!lastGen)return;ensureProject();
+ P.scenes.push({id:uid(),bg:`center/cover no-repeat url('${lastGen.url}')`,els:[],dur:4,name:'AI सीन'});P.cur=P.scenes.length-1;P.t=Date.now();save();closeModal();go('editor');
+}
+async function genText(name){
+ const pr=$('#aip').value.trim();if(!pr){toast('पहले विषय लिखो');return}
+ $('#aires').innerHTML='<p>⏳ AI लिख रहा है…</p>';
+ const ask=name==='Story Generator'?'Write a short fun story for kids (about 150 words) in simple Hindi (Devanagari) about: ':'Write a short dialogue script for a 2D cartoon video in simple Hindi (Devanagari), with character names and about 8 lines, about: ';
+ try{
+  const r=await fetch('https://text.pollinations.ai/'+encodeURIComponent(ask+pr));const tx=(await r.text()).trim();
+  if(!tx)throw 0;
+  S.generated.unshift({id:uid(),type:name,prompt:pr,text:tx,t:Date.now()});save();
+  $('#aires').innerHTML=`<textarea id="gtx" rows="10">${esc(tx)}</textarea><div style="display:flex;gap:6px;margin-top:8px"><button class="sm" onclick="navigator.clipboard&&navigator.clipboard.writeText($('#gtx').value);toast('कॉपी हो गया')">📋 कॉपी</button><button class="sm" onclick="speakText($('#gtx').value,'hi-IN',1,1)">▶ सुनो</button></div>`;
+ }catch(e){$('#aires').innerHTML='<p style="color:var(--bad)">❌ टेक्स्ट नहीं बना। इंटरनेट देखो और दोबारा कोशिश करो।</p>'}
+}
+async function genVideo(name){
+ const pr=$('#aip').value.trim();if(!pr){toast('पहले विषय लिखो');return}
+ $('#aires').innerHTML='<p>⏳ सीन और तस्वीरें बन रही हैं… 30-60 सेकंड लग सकते हैं</p>';
+ let lines=[];
+ try{const r=await fetch('https://text.pollinations.ai/'+encodeURIComponent('Write exactly 3 short scene descriptions in English (max 12 words each) for a 2D cartoon video about: '+pr+'. One per line, no numbering, no extra text.'));
+  lines=(await r.text()).split('\n').map(s=>s.replace(/^[\d\-\.\)\s*]+/,'').trim()).filter(Boolean).slice(0,3)}catch(e){}
+ if(lines.length<3)lines=[pr+', beginning',pr+', middle',pr+', ending'];
+ const seed=Math.floor(Math.random()*1e6);
+ const pj=mkProject(null,'16:9');pj.name=pr.slice(0,20);
+ pj.scenes=lines.map((l,i)=>({id:uid(),bg:`center/cover no-repeat url('${aiImgURL(l+', 2D cartoon background scenery',1024,576,seed+i)}')`,els:[{id:uid(),type:'text',content:l,name:'कैप्शन',x:50,y:88,size:24,rot:0,op:1,color:'#ffffff'}],dur:4,name:'सीन '+(i+1),narr:''}));
+ S.generated.unshift({id:uid(),type:'AI Video',prompt:pr,projectId:pj.id,thumb:aiImgURL(lines[0]+', 2D cartoon',512,288,seed),t:Date.now()});
+ save();P=pj;closeModal();toast('✅ वीडियो प्रोजेक्ट बन गया — एडिट करो और एक्सपोर्ट करो');go('editor');
+}
+
+/* ============ आवाज़ ============ */
+let VOX=[];function loadVox(){try{VOX=speechSynthesis.getVoices()}catch(e){}}
+loadVox();try{speechSynthesis.onvoiceschanged=loadVox}catch(e){}
+function speakText(txt,lang,pitch,rate){
+ try{
+  speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(txt);u.lang=lang;u.pitch=pitch||1;u.rate=rate||1;
+  const v=VOX.find(x=>x.lang===lang)||VOX.find(x=>x.lang.replace('_','-').startsWith(lang.slice(0,2)));if(v)u.voice=v;
+  u.onerror=()=>toast('इस फ़ोन/ब्राउज़र में यह आवाज़ उपलब्ध नहीं है');
+  speechSynthesis.speak(u);
+ }catch(e){toast('इस ब्राउज़र में आवाज़ की सुविधा नहीं है')}
+}
+const allVoices=()=>[...VOICES,...S.myVoices];
+function voiceParams(v){
+ if(v.pitch!==undefined)return {lang:v.lang,pitch:v.pitch,rate:v.rate};
+ return {lang:v.l==='Hindi'?'hi-IN':'en-IN',pitch:{Male:.8,Female:1.2,Child:1.7}[v.g]||1,rate:{Happy:1.1,Serious:.9,Calm:.85,Excited:1.25,Angry:1.1,Sad:.8,Cute:1.1}[v.e]||1};
+}
+const findVoice=id=>allVoices().find(v=>v.id===id);
+const voiceName=id=>{const v=findVoice(id);return v?v.n:'कोई नहीं'};
+function previewVoice(id){const v=findVoice(id);if(!v)return;const p=voiceParams(v);speakText(v.text||(p.lang==='hi-IN'?'नमस्ते, मैं '+v.n+' हूँ':'Hello, I am '+v.n),p.lang,p.pitch,p.rate)}
+function speakNarr(sc){if(!sc.narr)return;const v=findVoice(P&&P.voice);const p=v?voiceParams(v):{lang:'hi-IN',pitch:1,rate:1};speakText(sc.narr,p.lang,p.pitch,p.rate)}
+function aiVoiceModal(){
+ modal(`<h3>🎙️ AI Voice</h3><div class="fld"><label>क्या बुलवाना है?</label><textarea id="vtx" rows="3" placeholder="नमस्ते दोस्तों!"></textarea></div>
+ <div class="fld"><label>भाषा</label><select id="vlang"><option value="hi-IN">हिंदी</option><option value="en-IN">English (India)</option><option value="en-US">English (US)</option></select></div>
+ <div class="fld"><label>आवाज़ का प्रकार</label><select id="vpitch"><option value="0.8">पुरुष</option><option value="1.2">महिला</option><option value="1.7">बच्चा</option></select></div>
+ <div class="fld"><label>स्पीड</label><input type="range" id="vrate" min="0.6" max="1.5" step="0.05" value="1" style="padding:0"></div>
+ <div class="fld"><label>नाम (सेव करने के लिए)</label><input id="vname" placeholder="जैसे: मेरी आवाज़ 1"></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pri" onclick="vSay()">▶ सुनो</button><button onclick="vSave()">💾 My Voices में सेव</button><button onclick="closeModal()">${t('Close')}</button></div>
+ <p style="color:var(--mute);font-size:11px;margin-top:10px">आवाज़ आपके फ़ोन/ब्राउज़र की अपनी आवाज़ों से बनती है। हिंदी की आवाज़ न मिले तो फ़ोन की सेटिंग में "Text-to-speech" में हिंदी जोड़ लो।</p>`);
+}
+function vSay(){const tx=$('#vtx').value.trim();if(!tx){toast('पहले कुछ लिखो');return}speakText(tx,$('#vlang').value,+$('#vpitch').value,+$('#vrate').value)}
+function vSave(){
+ const tx=$('#vtx').value.trim();if(!tx){toast('पहले कुछ लिखो');return}
+ const lang=$('#vlang').value;S.myVoices.unshift({id:uid(),n:($('#vname').value.trim()||tx.slice(0,12)),g:'Custom',l:lang==='hi-IN'?'Hindi':'English',e:'Custom',text:tx,lang,pitch:+$('#vpitch').value,rate:+$('#vrate').value});
+ S.generated.unshift({id:uid(),type:'AI Voice',prompt:tx,text:tx,t:Date.now()});save();toast('✅ My Voices में सेव हो गया');
+}
+
+/* ============ फ़ेवरेट / एसेट ============ */
+function favBtn(k,e,n){const f=S.favs[k];return `<span class="fav ${f?'on':''}" onclick="togFav('${k}','${e}','${n}',this)">${f?'★':'☆'}</span>`}
+function togFav(k,e,n,el){if(S.favs[k])delete S.favs[k];else S.favs[k]={e,n};save();el.classList.toggle('on',!!S.favs[k]);el.textContent=S.favs[k]?'★':'☆'}
+function assets(){
+ const cats=[...Object.keys(ASSET_CATS),'My Assets'];
+ let items;
+ if(aState.q){items=[];Object.keys(ASSET_CATS).forEach(c=>ASSET_CATS[c].forEach((e,i)=>{if(c.toLowerCase().includes(aState.q))items.push({e,n:c+' '+(i+1),id:c+i})}))}
+ else if(aState.cat==='My Assets')items=S.myAssets.map(a=>({...a,e:a.em,n:a.name,mine:1}));
+ else items=ASSET_CATS[aState.cat].map((e,i)=>({e,n:aState.cat+' '+(i+1),id:aState.cat+i}));
+ return topbar(t('Assets'),'<button class="sm" onclick="aiTool(\'AI PNG Asset\')">✨ AI PNG Asset</button><button class="sm" onclick="uploadAsset()">⬆ अपलोड</button>')+`<div class="wrap">
+ <input placeholder="🔍 एसेट खोजो…" value="${esc(aState.q)}" oninput="aState.q=this.value.toLowerCase();refreshAssets()" style="margin-bottom:10px">
+ <div class="chips">${cats.map(c=>`<div class="chip ${aState.cat===c&&!aState.q?'on':''}" onclick="aState.cat='${c}';aState.q='';go('assets')">${c}</div>`).join('')}</div>
+ <div class="grid">${items.length?items.map(a=>`<div class="card">${a.mine?'':favBtn('a'+a.id,a.e,a.n)}${thumb(a)}<div class="nm">${esc(a.n)}</div><div class="row">
+ ${a.mine?`<button class="sm" onclick="previewMine('myAssets','${a.id}')">👁</button><button class="sm pri" onclick="addMine('myAssets','${a.id}')">${t('Add')}</button><button class="sm" onclick="delMy('myAssets','${a.id}')">🗑</button>`:`<button class="sm" onclick="previewItem('${a.e}','${a.n}')">👁</button><button class="sm pri" onclick="addToScene('${a.e}','${a.n}')">${t('Add')}</button>`}</div></div>`).join(''):'<div class="card" style="grid-column:1/-1;color:var(--mute)">कुछ नहीं मिला</div>'}</div></div>`;
+}
+function refreshAssets(){go('assets');const i=$('#main input');if(i){i.focus();i.setSelectionRange(i.value.length,i.value.length)}}
+function uploadAsset(){
+ const f=document.createElement('input');f.type='file';f.accept='image/*';
+ f.onchange=()=>{const r=new FileReader();r.onload=()=>{S.myAssets.unshift({id:uid(),em:'🖼️',name:f.files[0].name.slice(0,14),img:r.result});save();toast('अपलोड हो गया');aState.cat='My Assets';go('assets')};r.readAsDataURL(f.files[0])};
+ f.click();
+}
+function previewItem(e,n){modal(`<h3>${n}</h3><div style="font-size:110px;text-align:center;margin:10px 0">${e}</div><div style="display:flex;gap:8px"><button class="pri" onclick="addToScene('${e}','${n}');closeModal()">सीन में जोड़ो</button><button onclick="closeModal()">${t('Close')}</button></div>`)}
+function previewMine(key,id){const x=S[key].find(a=>a.id===id);modal(`<h3>${esc(x.name)}</h3><div class="cut" style="text-align:center;padding:10px;margin:10px 0">${thumb(x,1)}</div><div style="display:flex;gap:8px"><button class="pri" onclick="closeModal();addMine('${key}','${id}')">सीन में जोड़ो</button><button onclick="closeModal()">${t('Close')}</button></div>`)}
+function delMy(key,id){const it=S[key].find(x=>x.id===id);S.trash.unshift({key,item:it,t:Date.now()});S[key]=S[key].filter(x=>x.id!==id);save();toast('ट्रैश में चला गया');go(view)}
+function ensureProject(){if(!P){P=S.projects[0]||mkProject(null,'16:9')}return P}
+function addToScene(em,name){ensureProject();go('editor');setTimeout(()=>addEl({type:'emoji',content:em,name}),40)}
+function addMine(key,id){const x=S[key].find(a=>a.id===id);if(!x)return;ensureProject();go('editor');setTimeout(()=>addEl(x.img?{type:'img',content:x.img,name:x.name}:{type:'emoji',content:x.em,name:x.name}),40)}
+
+/* ============ म्यूज़िक लाइब्रेरी ============ */
+function music(){
+ return topbar(t('Music Library'))+`<div class="wrap"><div class="chips">${Object.keys(MUSIC).map(c=>`<div class="chip ${mState.cat===c?'on':''}" onclick="mState.cat='${c}';go('music')">${c}</div>`).join('')}</div>
+ <div class="list">${MUSIC[mState.cat].map(x=>`<div class="it"><div style="font-size:24px">🎵</div><div class="t"><b>${x}</b><br><small>${mState.cat} • BGM</small></div><button class="sm" onclick="toggleMusic('${x}')">${musicNow===x?'⏸':'▶'}</button><button class="sm" onclick="saveMusic('${x}')">⭐</button><button class="sm pri" onclick="addMusic('${x}')">सीन में जोड़ो</button></div>`).join('')}</div></div>`;
+}
+function saveMusic(x){if(!S.myMusic.includes(x)){S.myMusic.unshift(x);save()}toast('⭐ My Music में सेव हो गया')}
+function addMusic(x){ensureProject();P.music=x;P.t=Date.now();save();toast('🎵 "'+x+'" प्रोजेक्ट में लग गया')}
+
+/* ============ किरदार ============ */
+function characters(){
+ const cats=[...Object.keys(CHARS),'My Characters'];
+ const items=cState.cat==='My Characters'?S.myChars.map(c=>({...c,e:c.em,n:c.name,mine:1})):CHARS[cState.cat].map((e,i)=>({e,n:cState.cat+' '+(i+1),id:'c'+cState.cat+i}));
+ return topbar(t('Characters'),'<button class="sm" onclick="aiTool(\'AI Character\')">✨ AI Character</button>')+`<div class="wrap"><div class="chips">${cats.map(c=>`<div class="chip ${cState.cat===c?'on':''}" onclick="cState.cat='${c}';go('characters')">${c}</div>`).join('')}</div>
+ <div class="grid">${items.length?items.map(c=>`<div class="card">${c.mine?'':favBtn(c.id,c.e,c.n)}${thumb(c)}<div class="nm">${esc(c.n)}</div><div class="row">
+ ${c.mine?`<button class="sm" onclick="previewMine('myChars','${c.id}')">👁</button><button class="sm" onclick="dupChar('${c.id}')">⎘</button><button class="sm pri" onclick="addMine('myChars','${c.id}')">${t('Add')}</button><button class="sm" onclick="delMy('myChars','${c.id}')">🗑</button>`:`<button class="sm" onclick="previewItem('${c.e}','${c.n}')">👁</button><button class="sm" onclick="dupBuiltin('${c.e}')">⎘</button><button class="sm pri" onclick="addToScene('${c.e}','${c.n}')">${t('Add')}</button>`}</div></div>`).join(''):'<div class="card" style="grid-column:1/-1;color:var(--mute)">अभी कोई किरदार नहीं। "AI Character" से बनाओ।</div>'}</div></div>`;
+}
+function dupBuiltin(e){S.myChars.unshift({id:uid(),em:e,name:'कॉपी'});save();toast('My Characters में कॉपी हो गया')}
+function dupChar(id){const m=S.myChars.find(c=>c.id===id);if(m){S.myChars.unshift({...m,id:uid(),name:m.name+' कॉपी'});save();go('characters')}}
+
+/* ============ सीन लाइब्रेरी ============ */
+function scenes(){
+ return topbar(t('Scene Library'),'<button class="sm pri" onclick="newProject()">＋ '+t('New Project')+'</button>')+`<div class="wrap"><h3>Backgrounds</h3><div class="tiles">${Object.keys(SCENEBG).map(k=>`<div class="tile" onclick="addSceneBG('${k}')"><div style="height:70px;border-radius:10px;background:${SCENEBG[k]}"></div><b>${k}</b></div>`).join('')}</div>
+ <h3>My Scenes</h3>${S.myScenes.length?`<div class="list">${S.myScenes.map(s=>`<div class="it"><div style="width:50px;height:34px;border-radius:6px;background:${s.bg}"></div><div class="t"><b>${esc(s.name)}</b></div><button class="sm pri" onclick="useMyScene('${s.id}')">प्रोजेक्ट में जोड़ो</button><button class="sm" onclick="delMy('myScenes','${s.id}')">🗑</button></div>`).join('')}</div>`:'<div class="card" style="color:var(--mute)">एडिटर में "सीन सेव" दबाओ</div>'}</div>`;
+}
+function addSceneBG(k){ensureProject();P.scenes.push({id:uid(),bg:SCENEBG[k],els:[],dur:3,name:k});P.t=Date.now();save();toast('✅ '+k+' सीन प्रोजेक्ट में जुड़ गया')}
+function useMyScene(id){const s=S.myScenes.find(x=>x.id===id);ensureProject();const c=JSON.parse(JSON.stringify(s));c.dur=3;P.scenes.push({id:uid(),bg:c.bg,els:c.els,dur:3,name:c.name});save();toast('✅ जुड़ गया')}
+
+/* ============ वॉइस लाइब्रेरी ============ */
+function voices(){
+ const list=allVoices().filter(v=>vState.g==='All'||v.g===vState.g);
+ return topbar(t('Voice Library'),'<button class="sm" onclick="aiTool(\'AI Voice\')">✨ AI Voice</button>')+`<div class="wrap"><div class="chips">${['All','Male','Female','Child','Custom'].map(g=>`<div class="chip ${vState.g===g?'on':''}" onclick="vState.g='${g}';go('voices')">${g}</div>`).join('')}</div>
+ <div class="list">${list.map(v=>`<div class="it"><div style="font-size:24px">🎙️</div><div class="t"><b>${esc(v.n)}</b><br><small>${v.g} • ${v.l} • ${v.e}</small></div><button class="sm" onclick="previewVoice('${v.id}')">▶</button><button class="sm pri" onclick="useVoice('${v.id}')">प्रोजेक्ट में लगाओ</button>${v.text!==undefined?`<button class="sm" onclick="delMy('myVoices','${v.id}')">🗑</button>`:''}</div>`).join('')||'<div class="card" style="color:var(--mute)">यहाँ अभी कुछ नहीं</div>'}</div></div>`;
+}
+function useVoice(id){ensureProject();P.voice=id;save();toast('🎙️ '+voiceName(id)+' आवाज़ लग गई')}
+
+/* ============ लाइब्रेरी ============ */
+function library(){
+ const g=ty=>S.generated.filter(x=>x.type===ty).length;
+ const L=[['📁','My Projects',S.projects.length],['🎞️','My Scenes',S.myScenes.length],['👤','My Characters',S.myChars.length],['🖼️','My Assets',S.myAssets.length],['🎙️','My Voices',S.myVoices.length],['🎵','My Music',S.myMusic.length],['🧰','My Templates',S.myTemplates.length],
+ ['🖼️','Generated AI Images',g('AI Image')+g('AI PNG Asset')+g('Background Generator')],['🎞️','Generated AI Videos',g('AI Video')],['🖌️','Generated Thumbnails',g('AI Thumbnail')],['📖','Generated Texts',g('Story Generator')+g('Script Generator')],['⭐','Favorites',Object.keys(S.favs).length],['🕘','Recently Used',S.recent.length],['🗑️','Trash',S.trash.length]];
+ return topbar(t('My Library'))+`<div class="wrap"><div class="tiles">${L.map(l=>`<div class="tile" onclick="libOpen('${l[1]}')"><div class="em">${l[0]}</div><b>${l[1]}</b><small style="color:var(--mute)">${l[2]} आइटम</small></div>`).join('')}</div></div>`;
+}
+function libOpen(n){
+ const close=`<button onclick="closeModal()" style="margin-top:10px">${t('Close')}</button>`;
+ const empty='<p style="color:var(--mute)">यहाँ अभी कुछ नहीं है।</p>';
+ const gl=(types,kind)=>{const a=S.generated.filter(x=>types.includes(x.type));return a.length?`<div class="grid" style="grid-template-columns:repeat(2,1fr)">${a.map(x=>`<div class="card" style="padding:6px">${x.thumb?`<img src="${x.thumb}" style="width:100%;border-radius:8px">`:''}<div class="nm">${esc(x.prompt.slice(0,30))}</div>${x.projectId?`<button class="sm pri" onclick="closeModal();openProject('${x.projectId}')">खोलो</button>`:''}</div>`).join('')}</div>`:empty};
+ let h='';
+ switch(n){
+ case'My Projects':closeModal();go('projects');return;
+ case'My Assets':closeModal();aState.cat='My Assets';go('assets');return;
+ case'My Characters':closeModal();cState.cat='My Characters';go('characters');return;
+ case'My Voices':h=S.myVoices.length?`<div class="list">${S.myVoices.map(v=>`<div class="it"><div class="t"><b>${esc(v.n)}</b><br><small>${esc((v.text||'').slice(0,40))}</small></div><button class="sm" onclick="previewVoice('${v.id}')">▶</button><button class="sm" onclick="delMy('myVoices','${v.id}');libOpen('My Voices')">🗑</button></div>`).join('')}</div>`:empty;break;
+ case'My Music':h=S.myMusic.length?`<div class="list">${S.myMusic.map(x=>`<div class="it"><div class="t"><b>🎵 ${x}</b></div><button class="sm" onclick="toggleMusic('${x}');libOpen('My Music')">${musicNow===x?'⏸':'▶'}</button><button class="sm pri" onclick="addMusic('${x}')">जोड़ो</button></div>`).join('')}</div>`:'<p style="color:var(--mute)">म्यूज़िक में ⭐ दबाओ, यहाँ आ जाएगा।</p>';break;
+ case'My Templates':h=S.myTemplates.length?`<div class="list">${S.myTemplates.map(x=>`<div class="it"><div class="t"><b>${esc(x.name)}</b></div><button class="sm pri" onclick="useTemplate('${x.id}')">इस्तेमाल करो</button></div>`).join('')}</div>`:'<p style="color:var(--mute)">एडिटर में "टेम्पलेट सेव" दबाओ।</p>';break;
+ case'My Scenes':h=S.myScenes.length?`<div class="list">${S.myScenes.map(s=>`<div class="it"><div style="width:50px;height:34px;border-radius:6px;background:${s.bg}"></div><div class="t"><b>${esc(s.name)}</b></div><button class="sm pri" onclick="useMyScene('${s.id}')">जोड़ो</button></div>`).join('')}</div>`:empty;break;
+ case'Generated AI Images':h=gl(['AI Image','AI PNG Asset','Background Generator']);break;
+ case'Generated AI Videos':h=gl(['AI Video']);break;
+ case'Generated Thumbnails':h=gl(['AI Thumbnail']);break;
+ case'Generated Texts':{const a=S.generated.filter(x=>x.text&&x.type!=='AI Voice');h=a.length?a.map(x=>`<div class="card" style="text-align:left;margin-bottom:8px"><b>${x.type}</b><p style="font-size:12px;color:var(--mute);white-space:pre-wrap">${esc(x.text.slice(0,300))}</p></div>`).join(''):empty;break}
+ case'Favorites':{const k=Object.keys(S.favs);h=k.length?`<div class="grid" style="grid-template-columns:repeat(3,1fr)">${k.map(x=>`<div class="card" style="padding:6px"><div class="em" style="font-size:34px">${S.favs[x].e}</div><button class="sm pri" onclick="closeModal();addToScene('${S.favs[x].e}','${S.favs[x].n}')">${t('Add')}</button></div>`).join('')}</div>`:empty;break}
+ case'Recently Used':h=S.recent.length?`<div class="grid" style="grid-template-columns:repeat(4,1fr)">${S.recent.map(e=>`<div class="card" style="padding:6px"><div class="em" style="font-size:30px">${e}</div></div>`).join('')}</div>`:empty;break;
+ case'Trash':h=S.trash.length?S.trash.map((x,i)=>`<div class="it" style="display:flex;gap:8px;align-items:center;margin-bottom:6px"><span style="font-size:22px">${x.item.em||'📄'}</span><span style="flex:1">${esc(x.item.name||x.item.n||'आइटम')}</span><button class="sm" onclick="restore(${i})">वापस लाओ</button></div>`).join(''):'<p style="color:var(--mute)">ट्रैश खाली है</p>';break;
+ }
+ modal(`<h3>${n}</h3>${h}${close}`);
+}
+function restore(i){const x=S.trash.splice(i,1)[0];S[x.key].unshift(x.item);save();closeModal();go('library')}
+
+/* ============ सेटिंग्स ============ */
+function settings(){
+ const unread=S.notifs.filter(n=>!n.read).length;
+ return topbar(t('Settings'))+`<div class="wrap"><div class="list">
+ <div class="it"><div class="t"><b>${t('Profile')}</b><br><small>${esc(S.user||'')}</small></div><button class="sm" onclick="profileModal()">देखो / बदलो</button></div>
+ <div class="it"><div class="t"><b>${t('Theme')}</b><br><small>डार्क / लाइट</small></div><button class="sm" onclick="toggleTheme()">बदलो</button></div>
+ <div class="it"><div class="t"><b>${t('Language')}</b><br><small>${{hi:'हिंदी',en:'English',hl:'Hinglish'}[S.lang]}</small></div><button class="sm" onclick="langModal()">बदलो</button></div>
+ <div class="it"><div class="t"><b>${t('Plan')}</b><br><small>🆓 हमेशा मुफ़्त — कोई सब्सक्रिप्शन नहीं</small></div></div>
+ <div class="it"><div class="t"><b>${t('Storage')}</b><br><small>${(JSON.stringify(S).length/1024).toFixed(1)} KB इस्तेमाल हुआ</small></div></div>
+ <div class="it"><div class="t"><b>${t('Notifications')}</b><br><small>${unread} नई</small></div><button class="sm" onclick="notifModal()">खोलो</button></div>
+ <div class="it"><div class="t"><b>${t('Help / Support')}</b></div><button class="sm" onclick="helpModal()">खोलो</button></div>
+ <div class="it"><div class="t"><b>${t('Terms & Privacy')}</b></div><button class="sm" onclick="termsModal()">खोलो</button></div>
+ <div class="it"><div class="t"><b>📲 ऐप इंस्टॉल करो</b><br><small>होम स्क्रीन पर Blackora का आइकन</small></div><button class="sm pri" onclick="installApp()">इंस्टॉल</button></div>
+ <div class="it"><div class="t"><b>${t('Logout')}</b></div><button class="sm" onclick="logout()">${t('Logout')}</button></div>
+ </div></div>`;
+}
+function toggleTheme(){S.theme=S.theme==='light'?'dark':'light';document.body.classList.toggle('light');save()}
+function langModal(){modal(`<h3>🌐 ${t('Language')}</h3><div class="seg" style="margin-bottom:12px">${[['hi','हिंदी'],['en','English'],['hl','Hinglish']].map(l=>`<button class="${S.lang===l[0]?'on':''}" onclick="S.lang='${l[0]}';save();closeModal();go('settings');toast('✅ भाषा बदल गई')">${l[1]}</button>`).join('')}</div><p style="color:var(--mute);font-size:12px;margin-bottom:10px">मेन्यू, टाइटल और मुख्य बटन भाषा के हिसाब से बदलते हैं।</p><button onclick="closeModal()">${t('Close')}</button>`)}
+function profileModal(){
+ const m={google:'Google',facebook:'Facebook',phone:'फ़ोन नंबर',email:'ईमेल',local:'इस फ़ोन पर (बिना लॉगिन)'}[S.method]||'—';
+ modal(`<h3>👤 ${t('Profile')}</h3><div style="text-align:center;font-size:60px;margin-bottom:8px">🧑‍🎨</div><div class="fld"><label>नाम</label><input id="pn" value="${esc(S.user||'')}"></div><p style="color:var(--mute);margin-bottom:12px">लॉगिन तरीका: ${m}<br>प्रोजेक्ट: ${S.projects.length}</p><div style="display:flex;gap:8px"><button class="pri" onclick="S.user=$('#pn').value.trim()||S.user;save();closeModal();go('settings')">${t('Save')}</button><button onclick="closeModal()">${t('Close')}</button></div>`);
+}
+function notifModal(){S.notifs.forEach(n=>n.read=true);save();modal(`<h3>🔔 ${t('Notifications')}</h3>${S.notifs.map(n=>`<div class="card" style="text-align:left;margin-bottom:8px">${n.t}</div>`).join('')||'<p style="color:var(--mute)">कोई नोटिफ़िकेशन नहीं</p>'}<button onclick="closeModal();go('settings')" style="margin-top:6px">${t('Close')}</button>`)}
+function helpModal(){modal(`<h3>🆘 ${t('Help / Support')}</h3>
+ ${[['नया प्रोजेक्ट कैसे बनाऊँ?','होम पर "नया प्रोजेक्ट" दबाओ, साइज़ चुनो (16:9, 9:16 या 1:1), फिर एडिटर खुल जाएगा।'],['किरदार या चीज़ें कैसे जोड़ूँ?','एडिटर में बाईं तरफ़ "किरदार" या "एसेट्स" टैब दबाओ और जो चाहिए उस पर टैप करो। फिर उंगली से खींचकर सही जगह रखो।'],['म्यूज़िक कैसे लगाऊँ?','एडिटर के "संगीत" टैब में ▶ से सुनो, फिर "Use" दबाओ।'],['आवाज़ कैसे लगाऊँ?','"आवाज़" टैब में सीन का डायलॉग लिखो और आवाज़ चुनो। प्रीव्यू में वह बोलेगी।'],['वीडियो कैसे डाउनलोड करूँ?','एडिटर में "एक्सपोर्ट" → "Export Video" दबाओ। बनते समय स्क्रीन चालू रखो और ऐप मत बदलो।'],['AI काम नहीं कर रहा?','इंटरनेट चालू होना चाहिए। कभी-कभी 30-60 सेकंड लगते हैं। दोबारा कोशिश करो।']].map(q=>`<div class="card" style="text-align:left;margin-bottom:8px"><b>${q[0]}</b><p style="color:var(--mute);margin-top:4px">${q[1]}</p></div>`).join('')}
+ <button onclick="closeModal()">${t('Close')}</button>`)}
+function termsModal(){modal(`<h3>📄 ${t('Terms & Privacy')}</h3><div style="color:var(--mute);line-height:1.6;margin-bottom:12px"><p><b style="color:var(--text)">नियम</b><br>Blackora आपको अपनी 2D कार्टून वीडियो बनाने और एडिट करने का मुफ़्त टूल देता है। दूसरों के कॉपीराइट वाली चीज़ें बिना इजाज़त इस्तेमाल न करें। ग़लत, हिंसक या किसी को नुकसान पहुँचाने वाली सामग्री न बनाएँ।</p><br><p><b style="color:var(--text)">गोपनीयता</b><br>आपके प्रोजेक्ट इसी डिवाइस के ब्राउज़र में सेव होते हैं। AI से बनवाने पर आपका लिखा हुआ वर्णन AI सेवा को भेजा जाता है। हम आपकी कोई निजी जानकारी बेचते नहीं हैं।</p><br><p style="font-size:11px">यह V2 डेमो के लिए शुरुआती नियम हैं; ऐप सबके लिए खोलने से पहले इन्हें पूरा किया जाएगा।</p></div><button onclick="closeModal()">${t('Close')}</button>`)}
+
+/* ============ प्रोजेक्ट ============ */
+const RATIOS={'16:9':[16,9],'9:16':[9,16],'1:1':[1,1]};
+function mkProject(tpl,ratio){
+ const bg=tpl?SCENEBG[tpl]:'linear-gradient(#87ceeb 60%,#6bbf59 60%)';
+ const p={id:uid(),name:'प्रोजेक्ट '+(S.projects.length+1),ratio,fps:30,res:'1080p',music:null,voice:null,t:Date.now(),scenes:[{id:uid(),bg,els:[],dur:3,name:tpl||'सीन 1'}],cur:0};
+ S.projects.unshift(p);save();return p;
+}
+function newProject(tpl){
+ const R=[['16:9','YouTube / TV',64,36],['9:16','Reels / Shorts',36,64],['1:1','Instagram',48,48]];
+ modal(`<h3>📐 वीडियो का साइज़ चुनो</h3><div class="rcards">${R.map(r=>`<div class="rc" onclick="pickRatio('${tpl||''}','${r[0]}')"><div class="box" style="width:${r[2]}px;height:${r[3]}px"></div><b>${r[0]}</b><small>${r[1]}</small></div>`).join('')}</div><button onclick="closeModal()" style="width:100%">${t('Cancel')}</button>`);
+}
+function pickRatio(tpl,r){closeModal();P=mkProject(tpl||null,r);undoStack=[];redoStack=[];sel=null;go('editor')}
+function openProject(id){P=S.projects.find(p=>p.id===id);if(!P)return;P.cur=0;sel=null;undoStack=[];redoStack=[];go('editor')}
+function renameProject(id){const p=S.projects.find(x=>x.id===id),n=prompt('नया नाम',p.name);if(n){p.name=n;save();go(view)}}
+function dupProject(id){const p=S.projects.find(x=>x.id===id),c=JSON.parse(JSON.stringify(p));c.id=uid();c.name=p.name+' कॉपी';S.projects.unshift(c);save();go(view)}
+function delProject(id){if(!confirm('हटाना है?'))return;S.projects=S.projects.filter(p=>p.id!==id);if(P&&P.id===id)P=null;save();go(view)}
+function saveTemplate(){S.myTemplates.unshift({id:uid(),name:P.name,data:JSON.stringify(P)});save();toast('✅ My Templates में सेव हो गया')}
+function useTemplate(id){const x=S.myTemplates.find(a=>a.id===id);const c=JSON.parse(x.data);c.id=uid();c.name=x.name+' (नया)';c.t=Date.now();S.projects.unshift(c);save();closeModal();P=c;go('editor')}
+
+/* ============ एडिटर ============ */
+const ETABS=[['scene','🎬','Scene'],['characters','👤','Chars'],['assets','🖼️','Assets'],['bg','🌄','BG'],['text','🔤','Text'],['voice','🎙️','Voice'],['music','🎵','Music'],['sfx','🔊','SFX'],['anim','🎞️','Anim'],['camera','📷','Camera'],['trans','🔀','Trans']];
+const SFX=['💥 Boom','👏 Clap','🔔 Bell','🐾 Steps','🌧️ Rain','😂 Laugh'];
+const ANIMS=['None','bounce','float','spin','shake','pulse'],TRANS=['None','Fade'];
+const scene=()=>P.scenes[P.cur];
+function renderEditor(){
+ if(!P){go('projects');return}
+ $('#editor').innerHTML=`
+ <div class="etop">
+  <button onclick="exitEditor()">← ${t('Back')}</button>
+  <input value="${esc(P.name)}" onchange="P.name=this.value;save()">
+  <div class="seg" style="flex-wrap:nowrap">${Object.keys(RATIOS).map(r=>`<button class="sm rbtn ${P.ratio===r?'on':''}" onclick="setRatio('${r}')">${r}</button>`).join('')}</div>
+  <button class="sm" onclick="undo()">↶</button><button class="sm" onclick="redo()">↷</button>
+  <button class="sm" onclick="copyEl()">${t('Copy')}</button><button class="sm" onclick="pasteEl()">Paste</button>
+  <button class="sm" onclick="dupEl()">Duplicate</button><button class="sm" onclick="lockEl()">🔒</button><button class="sm" onclick="hideEl()">👁</button><button class="sm" onclick="delEl()">🗑</button>
+  <button class="sm" onclick="document.getElementById('layers').classList.toggle('open')">🗂 ${t('Layers')}</button>
+  <button class="sm" onclick="saveSceneLib()">सीन सेव</button><button class="sm" onclick="saveTemplate()">टेम्पलेट सेव</button>
+  <button class="sm" onclick="startPlay()">▶ ${t('Preview')}</button><button class="pri sm" onclick="exportModal()">${t('Export')}</button>
+ </div>
+ <div class="ebody">
+  <div class="tools">${ETABS.map(x=>`<button class="${etab===x[0]?'on':''}" onclick="pickTab('${x[0]}')"><span>${x[1]}</span>${t(x[2])}</button>`).join('')}</div>
+  <div class="drawer ${dOpen?'open':''}" id="drawer">${drawerHTML()}</div>
+  <div class="center"><div class="stagewrap" onclick="if(event.target===this)closeDrawers()"><div id="stage"></div></div>
+   <div class="tl"><div class="tlrow"><b style="font-size:12px">${t('Timeline')}</b><button class="sm" onclick="addScene()">＋ ${t('Scene')}</button><button class="sm" onclick="dupScene()">Duplicate</button><button class="sm" onclick="delScene()">Delete</button>
+   <span style="font-size:12px;color:var(--mute)">${t('Duration')}</span><input type="number" min="1" max="30" value="${scene().dur}" style="width:60px;padding:4px" onchange="scene().dur=+this.value;save();drawScenes()"><span id="tlinfo" style="font-size:11px;color:var(--mute)"></span></div>
+   <div class="scenes" id="scenes"></div></div></div>
+  <div class="layers" id="layers"></div>
+ </div>`;
+ sizeStage();drawStage();drawLayers();drawScenes();
+}
+function pickTab(x){if(etab===x&&mob())dOpen=!dOpen;else{etab=x;dOpen=true}renderEditor()}
+function closeDrawers(){dOpen=false;const d=$('#drawer');if(d)d.classList.remove('open');const l=$('#layers');if(l)l.classList.remove('open')}
+function exitEditor(){stopPlay();stopMusic();save();go('home')}
+function sizeStage(){
+ const st=$('#stage');if(!st)return;const [w,h]=RATIOS[P.ratio],wrap=st.parentElement;
+ const mw=wrap.clientWidth-24,mh=wrap.clientHeight-24;
+ let W=mw,H=W*h/w;if(H>mh){H=mh;W=H*w/h}
+ st.style.width=Math.max(120,W)+'px';st.style.height=Math.max(80,H)+'px';
+}
+addEventListener('resize',()=>{if(view==='editor'){sizeStage();drawStage()}});
+function drawerHTML(){
+ const mini=a=>`<div class="mini">${a.map(e=>`<div onclick="addEl({type:'emoji',content:'${e}',name:'${e}'})">${e}</div>`).join('')}</div>`;
+ const miniMine=(key)=>S[key].length?`<h3 style="font-size:12px;color:var(--mute)">मेरे</h3><div class="mini">${S[key].map(x=>`<div onclick="addMine('${key}','${x.id}')">${x.img?`<img src="${x.img}" style="width:40px;height:40px;object-fit:contain">`:x.em}</div>`).join('')}</div>`:'';
+ switch(etab){
+ case'scene':return `<b>${t('Scenes')}</b><p style="color:var(--mute);font-size:12px;margin:6px 0">नीचे टाइमलाइन से सीन चुनो। बैकग्राउंड "${t('BG')}" टैब में बदलो।</p><button onclick="addScene()" style="width:100%">＋ नया सीन</button>`;
+ case'characters':return `<b>${t('Characters')}</b>`+Object.keys(CHARS).map(k=>`<h3 style="font-size:12px;color:var(--mute)">${k}</h3>${mini(CHARS[k])}`).join('')+miniMine('myChars');
+ case'assets':return `<b>${t('Assets')}</b>`+miniMine('myAssets')+Object.keys(ASSET_CATS).map(k=>`<h3 style="font-size:12px;color:var(--mute)">${k}</h3>${mini(ASSET_CATS[k])}`).join('');
+ case'bg':return `<b>${t('Background')}</b><div class="mini" style="margin-top:8px">${Object.keys(SCENEBG).map(k=>`<div onclick="setBG('${k}')" style="background:${SCENEBG[k]};height:46px"><small style="color:#fff;margin-top:30px">${k}</small></div>`).join('')}</div><div class="fld" style="margin-top:10px"><label>एक रंग चुनो</label><input type="color" onchange="setBGc(this.value)"></div><button class="sm" onclick="aiTool('Background Generator')" style="width:100%">✨ AI से बैकग्राउंड बनाओ</button>`;
+ case'text':return `<b>${t('Text')}</b><div class="fld" style="margin-top:8px"><input id="txin" placeholder="यहाँ लिखो"></div><button class="pri" onclick="addText()" style="width:100%">टेक्स्ट जोड़ो</button>${sel&&sel.type==='text'?`<div class="fld" style="margin-top:10px"><label>रंग</label><input type="color" value="${sel.color}" onchange="setProp('color',this.value)"></div>`:''}`;
+ case'voice':return `<b>${t('Voice')}</b><div class="fld" style="margin-top:8px"><label>इस सीन में क्या बोलना है?</label><textarea rows="3" id="narr" onchange="scene().narr=this.value;save()">${esc(scene().narr||'')}</textarea></div><button class="sm" onclick="scene().narr=$('#narr').value;save();speakNarr(scene())">▶ सुनो</button><p style="color:var(--mute);font-size:12px;margin:10px 0 6px">आवाज़ चुनो (अभी: ${esc(voiceName(P.voice))})</p>${allVoices().map(v=>`<div class="layer"><span class="n">${esc(v.n)} <small style="color:var(--mute)">${v.g}</small></span><button class="sm" onclick="previewVoice('${v.id}')">▶</button><button class="sm" onclick="P.voice='${v.id}';save();renderEditor()">Use</button></div>`).join('')}`;
+ case'music':return `<b>${t('Music')}</b><p style="color:var(--mute);font-size:12px;margin:6px 0">अभी: ${P.music||'कोई नहीं'}</p>${P.music?'<button class="sm" onclick="P.music=null;save();stopMusic();renderEditor()">❌ हटाओ</button>':''}`+Object.keys(MUSIC).map(k=>MUSIC[k].map(x=>`<div class="layer"><span class="n">${x}</span><button class="sm" onclick="toggleMusic('${x}')">${musicNow===x?'⏸':'▶'}</button><button class="sm" onclick="P.music='${x}';save();renderEditor()">Use</button></div>`).join('')).join('');
+ case'sfx':return `<b>SFX</b><div class="list" style="margin-top:8px">${SFX.map(s=>`<div class="it" style="padding:6px"><span class="t">${s}</span><button class="sm" onclick="addEl({type:'emoji',content:'${s.split(' ')[0]}',name:'SFX ${s.split(' ')[1]}'})">${t('Add')}</button></div>`).join('')}</div>`;
+ case'anim':return `<b>${t('Animation')}</b>${sel?`<p style="font-size:12px;color:var(--mute);margin:6px 0">${esc(sel.name)}</p><div class="seg">${ANIMS.map(a=>`<button class="${(sel.anim||'None')===a?'on':''}" onclick="setProp('anim','${a}');renderEditor()">${a}</button>`).join('')}</div>`:'<p style="color:var(--mute);font-size:12px;margin-top:6px">पहले स्टेज पर कोई चीज़ चुनो</p>'}`;
+ case'camera':return `<b>${t('Camera')}</b><p style="color:var(--mute);font-size:12px;margin:6px 0">इस सीन का ज़ूम</p><input type="range" min="100" max="200" value="${scene().zoom||100}" oninput="scene().zoom=+this.value;drawStage()" onchange="save()" style="padding:0">`;
+ case'trans':return `<b>${t('Transition')}</b><div class="seg" style="margin-top:8px">${TRANS.map(a=>`<button class="${(scene().trans||'None')===a?'on':''}" onclick="scene().trans='${a}';save();renderEditor()">${a}</button>`).join('')}</div>`;
+ }
+}
+function drawStage(){
+ const st=$('#stage');if(!st)return;const sc=scene();st.style.background=sc.bg;
+ st.innerHTML=`<div style="position:absolute;inset:0;transform:scale(${(sc.zoom||100)/100});transform-origin:center">${sc.els.map(elHTML).join('')}</div>`;
+ const W=st.clientWidth;
+ st.querySelectorAll('.el').forEach(n=>{
+  const e=sc.els.find(x=>x.id===n.dataset.id);
+  if(e.type==='img')n.firstChild.style.width=(e.size*2.2*W/700)+'px';else n.style.fontSize=(e.size*W/700)+'px';
+  n.onpointerdown=ev=>startDrag(ev,e,n);
+ });
+}
+function elHTML(e){
+ if(e.hidden)return '';
+ const anim=e.anim&&e.anim!=='None'?`animation:b_${e.anim} 1.2s infinite;`:'';
+ const st=`left:${e.x}%;top:${e.y}%;transform:translate(-50%,-50%) rotate(${e.rot||0}deg);${e.type==='text'?`color:${e.color};font-weight:700;text-shadow:0 2px 6px #000;`:''}opacity:${e.op??1};${anim}`;
+ return `<div class="el ${sel&&sel.id===e.id?'sel':''}" data-id="${e.id}" style="${st}">${e.type==='img'?`<img src="${e.content}" draggable="false">`:esc(e.content)}</div>`;
+}
+const css=document.createElement('style');
+css.textContent=`@keyframes b_bounce{0%,100%{margin-top:0}50%{margin-top:-18px}}@keyframes b_float{0%,100%{margin-top:0}50%{margin-top:-10px;margin-left:8px}}@keyframes b_spin{to{rotate:360deg}}@keyframes b_shake{0%,100%{margin-left:0}25%{margin-left:-8px}75%{margin-left:8px}}@keyframes b_pulse{0%,100%{scale:1}50%{scale:1.25}}`;
+document.head.appendChild(css);
+function startDrag(ev,e,n){
+ ev.preventDefault();pick(e);if(e.locked)return;
+ const r=$('#stage').getBoundingClientRect();let moved=false;
+ const mv=m=>{moved=true;e.x=Math.min(100,Math.max(0,(m.clientX-r.left)/r.width*100));e.y=Math.min(100,Math.max(0,(m.clientY-r.top)/r.height*100));n.style.left=e.x+'%';n.style.top=e.y+'%'};
+ const up=()=>{removeEventListener('pointermove',mv);removeEventListener('pointerup',up);if(moved){pushUndo();save()}};
+ addEventListener('pointermove',mv);addEventListener('pointerup',up);
+}
+function pick(e){sel=e;document.querySelectorAll('.el').forEach(n=>n.classList.toggle('sel',n.dataset.id===e.id));drawLayers()}
+function drawLayers(){
+ const L=$('#layers');if(!L)return;const sc=scene();
+ L.innerHTML=`<b>${t('Layers')}</b><div style="margin-top:8px">${[...sc.els].reverse().map(e=>`<div class="layer ${sel&&sel.id===e.id?'on':''}" onclick="pickId('${e.id}')"><span>${e.type==='text'?'🔤':e.type==='img'?'🖼️':e.content}</span><span class="n">${esc(e.name)}</span><i onclick="event.stopPropagation();togLock('${e.id}')">${e.locked?'🔒':'🔓'}</i><i onclick="event.stopPropagation();togHide('${e.id}')">${e.hidden?'🙈':'👁'}</i></div>`).join('')||'<small style="color:var(--mute)">खाली</small>'}</div>
+ ${sel?`<hr style="border:0;border-top:1px solid var(--line);margin:12px 0"><div class="prop"><label>साइज़</label><input type="range" min="10" max="200" value="${sel.size}" oninput="setProp('size',+this.value,1)" onchange="pushUndo();save()"></div>
+ <div class="prop"><label>घुमाओ</label><input type="range" min="-180" max="180" value="${sel.rot||0}" oninput="setProp('rot',+this.value,1)" onchange="pushUndo();save()"></div>
+ <div class="prop"><label>पारदर्शिता</label><input type="range" min="10" max="100" value="${(sel.op??1)*100}" oninput="setProp('op',this.value/100,1)" onchange="pushUndo();save()"></div>
+ <div class="prop"><button class="sm" onclick="layerMove(1)">⬆ आगे</button><button class="sm" onclick="layerMove(-1)">⬇ पीछे</button></div>`:''}`;
+}
+function pickId(id){sel=scene().els.find(x=>x.id===id);drawStage();drawLayers()}
+function drawScenes(){
+ const s=$('#scenes');if(!s)return;
+ s.innerHTML=P.scenes.map((sc,i)=>`<div class="sc ${i===P.cur?'on':''}" style="background:${sc.bg}" onclick="P.cur=${i};sel=null;renderEditor()"><b style="text-shadow:0 1px 3px #000">${i+1}. ${esc(sc.name)}</b><span style="text-shadow:0 1px 3px #000">${sc.dur}s • ${sc.els.length}</span></div>`).join('');
+ const tot=P.scenes.reduce((a,b)=>a+b.dur,0),ti=$('#tlinfo');
+ if(ti)ti.textContent=t('Total')+' '+tot+'s'+(P.music?' • 🎵 '+P.music:'')+(P.voice?' • 🎙️ '+voiceName(P.voice):'');
+}
+const snap=()=>JSON.stringify(P.scenes);
+function pushUndo(){undoStack.push(snap());if(undoStack.length>40)undoStack.shift();redoStack=[]}
+function undo(){if(!undoStack.length)return;redoStack.push(snap());P.scenes=JSON.parse(undoStack.pop());sel=null;P.cur=Math.min(P.cur,P.scenes.length-1);save();renderEditor()}
+function redo(){if(!redoStack.length)return;undoStack.push(snap());P.scenes=JSON.parse(redoStack.pop());sel=null;P.cur=Math.min(P.cur,P.scenes.length-1);save();renderEditor()}
+function addEl(o){
+ if(!P||view!=='editor')return;pushUndo();
+ const e={id:uid(),type:o.type,content:o.content,name:o.name||o.content,x:50,y:55,size:o.type==='text'?36:70,rot:0,op:1,color:o.color||'#ffffff'};
+ scene().els.push(e);sel=e;if(o.type==='emoji')addRecent(o.content);P.t=Date.now();save();drawStage();drawLayers();drawScenes();
+ if(mob()){dOpen=false;const d=$('#drawer');if(d)d.classList.remove('open')}
+}
+function addText(){const v=$('#txin').value.trim();if(!v){toast('कुछ लिखो');return}addEl({type:'text',content:v,name:'टेक्स्ट: '+v.slice(0,10)});$('#txin').value=''}
+function setProp(k,v,live){if(!sel)return;sel[k]=v;if(live)drawStage();else{pushUndo();save();drawStage()}}
+function delEl(){if(!sel){toast('पहले कुछ चुनो');return}pushUndo();const sc=scene();sc.els=sc.els.filter(x=>x.id!==sel.id);sel=null;save();drawStage();drawLayers();drawScenes()}
+let clip=null;
+function copyEl(){if(!sel){toast('पहले कुछ चुनो');return}clip=JSON.parse(JSON.stringify(sel));toast('कॉपी हो गया')}
+function pasteEl(){if(!clip){toast('पहले कॉपी करो');return}pushUndo();const e=JSON.parse(JSON.stringify(clip));e.id=uid();e.x=Math.min(95,e.x+5);e.y=Math.min(95,e.y+5);scene().els.push(e);sel=e;save();drawStage();drawLayers();drawScenes()}
+function dupEl(){if(!sel){toast('पहले कुछ चुनो');return}clip=JSON.parse(JSON.stringify(sel));pasteEl()}
+function lockEl(){if(!sel){toast('पहले कुछ चुनो');return}togLock(sel.id)}
+function hideEl(){if(!sel){toast('पहले कुछ चुनो');return}togHide(sel.id)}
+function togLock(id){const e=scene().els.find(x=>x.id===id);e.locked=!e.locked;save();drawLayers()}
+function togHide(id){const e=scene().els.find(x=>x.id===id);e.hidden=!e.hidden;save();drawStage();drawLayers()}
+function layerMove(d){const a=scene().els,i=a.findIndex(x=>x.id===sel.id),j=i+d;if(j<0||j>=a.length)return;pushUndo();[a[i],a[j]]=[a[j],a[i]];save();drawStage();drawLayers()}
+function setBG(k){pushUndo();scene().bg=SCENEBG[k];scene().name=k;save();renderEditor()}
+function setBGc(c){pushUndo();scene().bg=c;save();renderEditor()}
+function addScene(){pushUndo();P.scenes.push({id:uid(),bg:scene().bg,els:[],dur:3,name:'सीन '+(P.scenes.length+1)});P.cur=P.scenes.length-1;sel=null;save();renderEditor()}
+function dupScene(){pushUndo();const c=JSON.parse(snap())[P.cur];c.id=uid();c.els.forEach(e=>e.id=uid());P.scenes.splice(P.cur+1,0,c);P.cur++;save();renderEditor()}
+function delScene(){if(P.scenes.length<2){toast('कम से कम 1 सीन चाहिए');return}pushUndo();P.scenes.splice(P.cur,1);P.cur=Math.max(0,P.cur-1);sel=null;save();renderEditor()}
+function saveSceneLib(){const sc=scene();S.myScenes.unshift({id:uid(),name:P.name+' - '+sc.name,bg:sc.bg,els:JSON.parse(JSON.stringify(sc.els))});save();toast('✅ My Scenes में सेव हो गया')}
+function setRatio(r){P.ratio=r;save();document.querySelectorAll('#xr button,.rbtn').forEach(b=>b.classList.toggle('on',b.textContent===r));sizeStage();drawStage()}
+
+/* प्रीव्यू */
+let previewMusic=false;
+function startPlay(){
+ if(playing){stopPlay();return}
+ playing=true;const keep=P.cur;let i=0;sel=null;closeDrawers();
+ const step=()=>{
+  if(!playing)return;
+  if(i>=P.scenes.length){stopPlay();P.cur=keep;renderEditor();toast('प्रीव्यू पूरा हुआ');return}
+  P.cur=i;drawStage();drawScenes();speakNarr(P.scenes[i]);
+  if(P.scenes[i].trans==='Fade'){const st=$('#stage');st.style.transition='none';st.style.opacity=0;setTimeout(()=>{st.style.transition='opacity .5s';st.style.opacity=1},30)}
+  playT=setTimeout(()=>{i++;step()},P.scenes[i].dur*1000);
+ };
+ if(P.music){playMusic(P.music);previewMusic=true}
+ toast('▶ प्रीव्यू चल रहा है (दोबारा दबाओ = रोको)');step();
+}
+function stopPlay(){playing=false;clearTimeout(playT);if(previewMusic){stopMusic();previewMusic=false}try{speechSynthesis.cancel()}catch(e){}const st=$('#stage');if(st){st.style.transition='';st.style.opacity=1}}
+
+/* ============ संगीत इंजन (सटीक टाइमिंग, बिना अटके) ============ */
+let AC=null,mTimer=null,musicNow=null;
+const MSTYLE={
+ Intense:{bpm:150,sc:[0,1,4,5,7,8],w:'sawtooth',b:45,v:.05,k:1},Mystical:{bpm:68,sc:[0,2,3,7,9],w:'sine',b:57,v:.12,k:0},
+ 'Pop-Romantic':{bpm:104,sc:[0,2,4,7,9],w:'triangle',b:55,v:.12,k:1},Bright:{bpm:124,sc:[0,2,4,5,7,9,11],w:'square',b:60,v:.04,k:1},
+ Romance:{bpm:76,sc:[0,2,4,7,9],w:'sine',b:55,v:.13,k:0},Lullaby:{bpm:60,sc:[0,2,4,7],w:'sine',b:64,v:.13,k:0},
+ Mysterious:{bpm:80,sc:[0,1,3,6,7],w:'triangle',b:52,v:.12,k:0},Rhymes:{bpm:112,sc:[0,2,4,5,7,9],w:'square',b:62,v:.04,k:1},
+ Suspense:{bpm:90,sc:[0,1,3,6],w:'sawtooth',b:43,v:.04,k:1},Village:{bpm:100,sc:[0,2,4,7,9],w:'triangle',b:57,v:.13,k:1},
+ Horror:{bpm:55,sc:[0,1,6,7],w:'sawtooth',b:36,v:.04,k:0},New:{bpm:118,sc:[0,3,5,7,10],w:'triangle',b:57,v:.12,k:1}
+};
+const trackCat=x=>{for(const c in MUSIC)if(MUSIC[c].includes(x))return c;return 'Bright'};
+const hashS=s=>{let h=7;for(const c of s)h=(h*31+c.charCodeAt(0))>>>0;return h};
+function playMusic(x){
+ stopMusic();
+ try{if(!AC){AC=new (window.AudioContext||window.webkitAudioContext)();AC.master=AC.createGain();AC.master.gain.value=.9;AC.master.connect(AC.destination)}AC.resume()}catch(e){toast('इस डिवाइस पर आवाज़ नहीं चल सकती');return}
+ const st=MSTYLE[trackCat(x)];let seed=hashS(x);
+ const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
+ const pat=Array.from({length:16},()=>rnd()<.25?-1:Math.floor(rnd()*st.sc.length));
+ const beat=60/st.bpm/2,hz=m=>440*Math.pow(2,(m-69)/12);
+ const note=(f,d,type,vol,when)=>{const o=AC.createOscillator(),g=AC.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,when);g.gain.linearRampToValueAtTime(vol,when+.02);g.gain.exponentialRampToValueAtTime(.0001,when+d);o.connect(g);g.connect(AC.master);o.start(when);o.stop(when+d+.05)};
+ let i=0,next=AC.currentTime+.06;
+ const sched=()=>{
+  while(next<AC.currentTime+.3){
+   const s=i%16,p=pat[s];
+   if(p>=0)note(hz(st.b+12+st.sc[p]),beat*1.8,st.w,st.v,next);
+   if(s%4===0){note(hz(st.b-12+st.sc[s/4]),beat*3.5,'triangle',.18,next);if(st.k)note(60,.15,'sine',.3,next)}
+   next+=beat;i++;
+  }
+ };
+ sched();mTimer=setInterval(sched,60);musicNow=x;
+}
+function stopMusic(){clearInterval(mTimer);mTimer=null;musicNow=null}
+function toggleMusic(x){
+ if(musicNow===x)stopMusic();else playMusic(x);
+ if(view==='music')go('music');else if(view==='editor'){const d=$('#drawer');if(d)d.innerHTML=drawerHTML()}
+}
+
+/* ============ एक्सपोर्ट (असली वीडियो + इमेज) ============ */
+function exportModal(){
+ modal(`<h3>📤 ${t('Export')}</h3>
+ <div class="fld"><label>साइज़ (Aspect Ratio)</label><div class="seg" id="xr">${Object.keys(RATIOS).map(r=>`<button class="${P.ratio===r?'on':''}" onclick="setRatio('${r}')">${r}</button>`).join('')}</div></div>
+ <div class="fld"><label>रेज़ोल्यूशन</label><select id="xres"><option>720p</option><option ${P.res==='1080p'?'selected':''}>1080p</option><option>4K</option></select></div>
+ <div class="fld"><label>FPS</label><select id="xfps"><option>24</option><option selected>30</option></select></div>
+ <div class="fld"><label><input type="checkbox" id="xwm" checked style="width:auto"> Blackora वॉटरमार्क लगाओ</label></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pri" onclick="exportVideo()">🎬 वीडियो बनाओ</button><button onclick="exportImage()">🖼️ इमेज</button><button onclick="save();closeModal();toast('प्रोजेक्ट सेव हो गया')">💾 सेव</button></div>
+ <p style="color:var(--mute);font-size:11px;margin-top:10px">वीडियो बनते समय स्क्रीन चालू रखो और दूसरे ऐप में मत जाओ। म्यूज़िक वीडियो में शामिल होता है। सीन की आवाज़/डायलॉग अभी वीडियो फ़ाइल में नहीं जुड़ते, वह प्रीव्यू में सुनाई देते हैं।</p>`);
+}
+const bgURL=sc=>{const m=sc.bg.match(/url\('?([^')]+)'?\)/);return m?m[1]:null};
+async function preloadScene(sc){const u=[];const b=bgURL(sc);if(b)u.push(b);sc.els.forEach(e=>{if(e.type==='img')u.push(e.content)});await Promise.all(u.map(loadImg))}
+function drawSceneSync(x,sc,cw,ch,wm){
+ const b=bgURL(sc);
+ if(b&&imgCache[b]){const im=imgCache[b],r=Math.max(cw/im.width,ch/im.height),w=im.width*r,h=im.height*r;x.drawImage(im,(cw-w)/2,(ch-h)/2,w,h)}
+ else{
+  const m=sc.bg.match(/#[0-9a-fA-F]{3,6}/g)||['#334155'];
+  if(sc.bg.includes('gradient')&&m.length>=2){const g=x.createLinearGradient(0,0,0,ch);g.addColorStop(0,m[0]);g.addColorStop(.6,m[0]);g.addColorStop(.6,m[1]);g.addColorStop(1,m[1]);x.fillStyle=g}else x.fillStyle=m[0];
+  x.fillRect(0,0,cw,ch);
+ }
+ const z=(sc.zoom||100)/100;x.save();x.translate(cw/2,ch/2);x.scale(z,z);x.translate(-cw/2,-ch/2);
+ x.textAlign='center';x.textBaseline='middle';
+ sc.els.filter(e=>!e.hidden).forEach(e=>{
+  x.save();x.globalAlpha=e.op??1;x.translate(e.x
